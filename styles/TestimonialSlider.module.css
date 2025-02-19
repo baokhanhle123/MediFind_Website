@@ -1,0 +1,111 @@
+.sliderContainer {
+  text-align: center;
+  padding: 20px;
+  background: linear-gradient(to left, #67c3f3, #5a98f2);
+  border-radius: 15px;
+  max-width: 800px;
+  margin: auto;
+}
+
+.slider {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide {
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.left,
+.right {
+  flex: 1;
+}
+
+.left {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.sub_left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sub_left h3 {
+  color: white;
+  font-size: 20px;
+  font-weight: 400;
+  margin: 0;
+}
+
+.sub_left p {
+  color: white;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 0;
+}
+
+.imageWrapper {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0;
+}
+
+.image {
+  border-radius: 50%;
+}
+
+.comment {
+  font-size: 16px;
+  font-style: italic;
+  color: white;
+  font-weight: 300;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.navButton {
+  font-size: 24px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #555;
+  margin: 0 15px;
+}
+
+.dots {
+  display: flex;
+  gap: 8px;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.activeDot {
+  background-color: #555;
+}
+
+.sliderContainer h2 {
+  color: white;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 22px;
+}

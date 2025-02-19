@@ -1,0 +1,98 @@
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Controls */
+.controls {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 10px;
+  height: 40px; /* Ensure uniform height */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+/* Focus styles for inputs and select elements */
+.controls input:focus,
+.controls select:focus {
+  border-color: #0c7fda;
+  box-shadow: 0 0 5px rgba(12, 127, 218, 0.3);
+}
+
+/* Buttons */
+.controls button {
+  background-color: #0c7fda;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.controls button:hover {
+  background-color: #0056a3;
+}
+
+.resetButton {
+  background-color: #d9534f;
+}
+
+.resetButton:hover {
+  background-color: #c9302c;
+}
+
+/* Table */
+.tableContainer {
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.paymentHistoryTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.paymentHistoryTable th,
+.paymentHistoryTable td {
+  text-align: left;
+  padding: 10px;
+  border: 1px solid #ddd;
+}
+
+.paymentHistoryTable th {
+  position: sticky;
+  top: 0;
+  background-color: #f0f0f0;
+  font-weight: bold;
+}
+
+.paymentHistoryTable tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.paymentHistoryTable tbody tr:hover {
+  background-color: #eaf5ff;
+}

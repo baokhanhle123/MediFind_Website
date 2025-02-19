@@ -1,0 +1,93 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.formContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+}
+
+.formTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.formDescription {
+  color: #555;
+  margin: 0px;
+}
+
+.form {
+  width: 100%;
+  margin-top: 30px;
+}
+
+.formLabel {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.inputField {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.formActions {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+}
+
+.checkboxLabel input {
+  margin-right: 5px;
+}
+
+.link {
+  text-decoration: none;
+  color: blue;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.primaryButton {
+  background-color: blue;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.secondaryButton {
+  background-color: white;
+  color: blue;
+  padding: 10px 20px;
+  border: 1px solid blue;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.imageContainer {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

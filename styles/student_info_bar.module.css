@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.container h3 {
+  margin: 0px;
+}
+.container p {
+  margin: 0px;
+  color: #9a9696;
+}
+.right_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
