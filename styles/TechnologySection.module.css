@@ -1,0 +1,170 @@
+.section {
+  background: var(--background-alt);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.techGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.techCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.techCard h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.5rem;
+}
+
+.techTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.tag {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.red {
+  background: rgba(196, 30, 58, 0.1);
+  color: var(--medifind-red);
+}
+
+.blue {
+  background: rgba(30, 136, 229, 0.1);
+  color: var(--medifind-blue);
+}
+
+.dataList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dataList li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+}
+
+.dataIcon {
+  color: var(--medifind-red);
+}
+
+/* Info Cards */
+.infoCards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.infoCard {
+  background: white;
+  padding: 2rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.infoIcon {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 1rem;
+  background: linear-gradient(135deg, var(--medifind-red-light), var(--medifind-red));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.infoCard h4 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+}
+
+.infoCard p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.paperBadge {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.5rem 1rem;
+  background: var(--background-alt);
+  color: var(--medifind-red);
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 20px;
+}
+
+/* Architecture Box */
+.architectureBox {
+  background: linear-gradient(135deg, var(--medifind-red) 0%, var(--medifind-red-light) 100%);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+}
+
+.architectureBox p {
+  font-size: 1rem;
+  line-height: 1.8;
+  margin: 0;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .techGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .infoCards {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .techCard {
+    padding: 1.5rem;
+  }
+
+  .infoCard {
+    padding: 1.5rem;
+  }
+
+  .architectureBox {
+    padding: 1.5rem;
+  }
+}

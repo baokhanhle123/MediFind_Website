@@ -3,20 +3,75 @@
 @tailwind utilities;
 
 :root {
+  /* MediFind Brand Colors */
+  --medifind-red: #C41E3A;
+  --medifind-red-dark: #9E1830;
+  --medifind-red-light: #E8495D;
+  --medifind-blue: #1E88E5;
+  --medifind-blue-dark: #1565C0;
+  --medifind-blue-light: #64B5F6;
+
+  /* Backgrounds */
   --background: #ffffff;
-  --foreground: #171717;
+  --background-alt: #F8F9FA;
+  --foreground: #1A1A2E;
+
+  /* Text */
+  --text-primary: #1A1A2E;
+  --text-secondary: #7D7987;
+  --text-light: #FFFFFF;
+
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, #C41E3A 0%, #E8495D 100%);
+  --gradient-secondary: linear-gradient(135deg, #1E88E5 0%, #64B5F6 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  color: var(--foreground);
+  color: var(--text-primary);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
-  padding: 1rem;
+  font-family: "Be Vietnam Pro", Arial, Helvetica, sans-serif;
+  line-height: 1.6;
+}
+
+/* Utility classes for animations */
+.animate-on-scroll {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Section padding utility */
+.section-padding {
+  padding: 5rem 2rem;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 3rem 1rem;
+  }
 }

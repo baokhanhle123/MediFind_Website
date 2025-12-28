@@ -1,0 +1,161 @@
+.section {
+  background: var(--background);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.subsection {
+  margin-bottom: 3rem;
+}
+
+.subsectionTitle {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 4px solid var(--medifind-red);
+}
+
+/* Mentors Grid */
+.mentorsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+/* Supervisor */
+.supervisorContainer {
+  display: flex;
+  justify-content: center;
+}
+
+/* Partners */
+.partnersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.partnerCard {
+  background: var(--background-alt);
+  padding: 1.5rem;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+  transition: all var(--transition-normal);
+}
+
+.partnerCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-md);
+}
+
+.partnerIcon {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--medifind-red);
+  box-shadow: var(--shadow-sm);
+}
+
+.partnerCard span {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Awards */
+.awardsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* Clinics */
+.clinicsSection {
+  background: var(--background-alt);
+  padding: 2rem;
+  border-radius: 16px;
+}
+
+.clinicsTitle {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--medifind-red);
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.clinicsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.clinicsList li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  padding: 0.75rem;
+  background: white;
+  border-radius: 8px;
+}
+
+.clinicNumber {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  background: var(--medifind-red);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .mentorsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .partnersGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .awardsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .mentorsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .partnersGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .clinicsSection {
+    padding: 1.5rem;
+  }
+}
