@@ -1,0 +1,31 @@
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 20px;
+  background: var(--background);
+  cursor: pointer;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.toggle:hover {
+  border-color: var(--medifind-red);
+}
+
+.toggle span {
+  color: var(--text-secondary);
+  transition: color var(--transition-fast);
+}
+
+.active {
+  color: var(--medifind-red) !important;
+  font-weight: 600;
+}
+
+.divider {
+  opacity: 0.5;
+}

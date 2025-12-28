@@ -1,0 +1,76 @@
+.container {
+  margin-bottom: 3rem;
+}
+
+.centered {
+  text-align: center;
+}
+
+.badge {
+  display: inline-block;
+  color: var(--medifind-red);
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--medifind-red);
+  margin: 0 0 0.75rem;
+  line-height: 1.2;
+}
+
+.dots {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.centered .dots {
+  justify-content: center;
+}
+
+.dots span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--text-secondary);
+  opacity: 0.5;
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  max-width: 600px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.centered .subtitle {
+  margin: 0 auto;
+}
+
+/* Light variant for dark backgrounds */
+.light .title {
+  color: var(--text-light);
+}
+
+.light .subtitle {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.light .dots span {
+  background: var(--text-light);
+}
+
+@media (max-width: 768px) {
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}

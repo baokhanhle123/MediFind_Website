@@ -1,0 +1,311 @@
+{
+  "nav": {
+    "home": "Home",
+    "problem": "Problem",
+    "solution": "Solution",
+    "technology": "Technology",
+    "team": "Team",
+    "download": "Download"
+  },
+  "hero": {
+    "tagline": "Use wisely, take precisely",
+    "title": "MediFind+",
+    "subtitle": "A platform helps people make smarter, safer healthcare decisions",
+    "badge": "Digital Health",
+    "cta_download": "Download App",
+    "cta_learn": "Learn More"
+  },
+  "problem": {
+    "title": "Problem",
+    "source": "Source data: Ministry of Health Vietnam, WHO",
+    "stats": {
+      "arbitrary_use": "88-91%",
+      "arbitrary_use_desc": "Citizens arbitrary use of antibiotics",
+      "pharmacies": "76%",
+      "pharmacies_desc": "Pharmacies sell antibiotics without prescriptions",
+      "worldwide": "11th",
+      "worldwide_desc": "Vietnam ranks 11th worldwide in antibiotic consumption",
+      "western_pacific": "2nd",
+      "western_pacific_desc": "Vietnam ranks 2nd in the Western Pacific region with the most deaths due to antibiotic resistance"
+    },
+    "global": {
+      "title": "Global",
+      "description": "According to WHO, antibiotic resistance is increasing and is just as dangerous as the COVID-19 pandemic.",
+      "deaths": "Every year, about 700,000 people die globally because of antibiotic resistance. This number could increase to 10 million people by 2050 ~ such as coughing or just a cut on the skin can cause death."
+    },
+    "issues": {
+      "misinformation": "Misinformation about medicines",
+      "continuity": "Poor continuity of care",
+      "engagement": "Low engagement in preventive health"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "founded": "MediFind was founded by a group of students from Ho Chi Minh City University of Technology and University of Economics Ho Chi Minh city (UEH)",
+    "description": "MediFind is an app that uses artificial intelligence technologies to figure out which medicines are in a picture or written text of a prescription. It then gives tips on how to safely take these medicines and advice that fits just right for each person's health needs.",
+    "features": "The app also has extra helpful features like reminders to take your medicine, a chat feature to ask questions, and a map to find nearby pharmacies, all to make using the app easier and better for everyone.",
+    "first_in_vietnam": "MediFind is the first application in Vietnam that allows users to recognize prescriptions through images and digital letters."
+  },
+  "solution": {
+    "title": "Solution",
+    "stakeholders": {
+      "government": {
+        "title": "Government",
+        "items": [
+          "Amplify preventive-health campaign",
+          "Support national digital-health objectives",
+          "Reach citizens at scale through official channels"
+        ]
+      },
+      "hospitals": {
+        "title": "Hospitals",
+        "items": [
+          "Strengthen continuity of care",
+          "Consolidate prescriptions and medication history in one place",
+          "Create new revenue streams for physical healthcare points"
+        ]
+      },
+      "clinics": {
+        "title": "Clinics & Pharmacies",
+        "items": [
+          "Serve as a bridge connecting users to trusted providers",
+          "Enable fast medicine ordering via partners (e.g., Grab)",
+          "Create new revenue streams for physical healthcare points"
+        ]
+      },
+      "pharma": {
+        "title": "Pharmaceutical Manufacturers",
+        "items": [
+          "QR codes on blister packs link to verified drug information",
+          "\"For more information, ask MediFind\" becomes a universal guidance point",
+          "Turn every medicine box into a trusted education channel",
+          "Access valuable anonymized analytics"
+        ]
+      },
+      "users": {
+        "title": "Users",
+        "items": [
+          "Personalized Health Insights - BMI tracking & lifestyle alerts",
+          "Environment Indicators - Real-time air-quality information",
+          "Pharmacy Recommendations - Trusted nearby pharmacies",
+          "Digital Health Notebook - Track medication history",
+          "Gamification & Rewards - Daily check-ins earn coins"
+        ]
+      }
+    },
+    "features": {
+      "health_track": {
+        "title": "Health Track",
+        "description": "Monitor your pulse, track drug overdose potential, symptoms, and side effects"
+      },
+      "reminder": {
+        "title": "Auto Reminder",
+        "description": "Never miss your medication with smart reminders and scheduling"
+      },
+      "pharmacy": {
+        "title": "Pharmacy Suggestions",
+        "description": "Find trusted nearby pharmacies with distance, reviews, and contact info"
+      },
+      "scan": {
+        "title": "Drug Identification",
+        "description": "Scan prescriptions using OCR-NLP technology for instant medication details"
+      },
+      "chatbot": {
+        "title": "MediGPT Chatbot",
+        "description": "Ask health questions and get personalized guidance powered by AI"
+      },
+      "history": {
+        "title": "Search History",
+        "description": "Keep track of all medicines you have used and saved"
+      }
+    }
+  },
+  "technology": {
+    "title": "Key Technology",
+    "modern": {
+      "title": "Modern Technology",
+      "items": ["OCR, NLP and LLM technique", "Big Data Analytics"]
+    },
+    "data": {
+      "title": "Datasets from",
+      "drugbank": "Drugbank (~40k records)",
+      "umls": "UMLS - Unified Medical Language System (~150k records)"
+    },
+    "solving": {
+      "title": "Solving an alarming problem",
+      "description": "Recognize antibiotics from all printed words and analyse its dosages"
+    },
+    "digital": {
+      "title": "Digital Transformation",
+      "description": "Digitize patients' medication history"
+    },
+    "research": {
+      "title": "Recreating models from scratch",
+      "description": "Utilize various advanced technologies to create our own model",
+      "paper": "Public paper in 17th Advanced Computing and Analytics 2023"
+    },
+    "architecture": {
+      "description": "MediFind's central architecture is based on two stages: Optical Character Recognition (OCR) and Natural Language Processing (NLP). By combining VietOCR and spaCy, and after a careful fine-tuning process, we have achieved a high degree of accuracy in identifying the names of medicines and antibiotics."
+    }
+  },
+  "team": {
+    "title": "Highlight",
+    "mentors": {
+      "title": "Mentors",
+      "sonia": {
+        "name": "Miss Sonia",
+        "role": "Business Advisor"
+      },
+      "thoai": {
+        "name": "Assoc.Prof Thoai Nam",
+        "role": "Technical Advisor"
+      },
+      "xuan": {
+        "name": "MSc Ha T Thanh Xuan",
+        "role": "Medical Advisor"
+      }
+    },
+    "supervisor": {
+      "title": "Supervisor",
+      "khanh": {
+        "name": "Khanh Le",
+        "role": "AI Developer"
+      }
+    },
+    "partners": {
+      "title": "Partners",
+      "hcmut_tbi": "HCMUT Technology Business Incubator",
+      "vsi": "Viet Startup Incubator (VSI)",
+      "hpc": "High Performance Computing HCMUT"
+    },
+    "awards": {
+      "title": "Honors",
+      "list": [
+        {
+          "title": "Winner",
+          "description": "Startup idea competition in the healthcare industry - Hanoi Medical University"
+        },
+        {
+          "title": "1st Runner Up",
+          "description": "FWD SpringboardX Student Challenge of Southeast Asia"
+        },
+        {
+          "title": "2nd Runner Up",
+          "description": "GBA Business Challenge"
+        },
+        {
+          "title": "First Runner Up",
+          "description": "GDSC - Google Developer Student Clubs - Ho Chi Minh city University Of Technology"
+        },
+        {
+          "title": "Innovation Prize",
+          "description": "VietFuture - Vietnam Information Technology Services and Software Association (VINASA)"
+        }
+      ]
+    },
+    "clinics": {
+      "title": "Clinics that accept MediFind in Vietnam",
+      "list": [
+        "Pediatric Specialist Clinic - Associate Professor, Dr. Nguyen Thi Cu",
+        "Pediatric Specialist Clinic - Doctor Nguyen Manh Phu, Head of Pediatric Respiratory Department",
+        "General internal medicine clinic - Doctor Nguyen Quang Hien",
+        "General Internal Medicine Clinic - Doctor Nguyen Van Tri",
+        "Ai My Clinic - Doctor Bui Van Doan"
+      ]
+    }
+  },
+  "market": {
+    "title": "Global market potential",
+    "government": {
+      "title": "Government-backed communication campaigns",
+      "description": "Healthcare requires trust - official endorsements accelerate adoption and position MediFind as a safe, credible, nationally aligned platform."
+    },
+    "university": {
+      "title": "Medical-university partnerships",
+      "description": "Pharmacy and medical students serve as nationwide ambassadors, validating and promoting the platform organically."
+    },
+    "pharmacy": {
+      "title": "Pharmacy and clinic integrations",
+      "description": "Every physical touchpoint from blister packs to store counters becomes a conversion point."
+    },
+    "gamification": {
+      "title": "Gamification",
+      "description": "Daily rewards drive long-term engagement, turning health routines into a consistent habit."
+    }
+  },
+  "revenue": {
+    "title": "Revenue Model",
+    "items": [
+      {
+        "title": "Government and University Collaborations",
+        "description": "Running sponsored health campaigns with government and medical universities to drive revenue and nationwide adoption."
+      },
+      {
+        "title": "B2B Pharma Partnerships",
+        "description": "Leveraging MediFind for product education, QR-code integration, and anonymized insights."
+      },
+      {
+        "title": "Commissions from Clinics and Pharmacies",
+        "description": "Transactional revenue from medicine and supplement ordering through last-mile delivery integrations."
+      },
+      {
+        "title": "Digital Health Services",
+        "description": "Online doctor consultations, personalized care plans and premium features."
+      }
+    ]
+  },
+  "differentiator": {
+    "title": "Point of difference",
+    "subtitle": "MediFind is the first application in Vietnam that allows users to recognize prescriptions through images and digital letters.",
+    "items": [
+      {
+        "title": "Free for first phase",
+        "description": "MediFind does not collect money from users - suitable in Vietnam."
+      },
+      {
+        "title": "Fast & Precise",
+        "description": "Identify medications through images and text instead of typing. Accurate ratio: ~95%"
+      },
+      {
+        "title": "Multifunctional Application",
+        "description": "Provide advanced features such as reminder, chatbot, pharmacies suggestions."
+      },
+      {
+        "title": "Up-to-date Technology",
+        "description": "Utilize various technologies such as OCR, NLP, Big Data Analytics."
+      },
+      {
+        "title": "Customer behavior education",
+        "description": "Create a points system where users earn and redeem points for vouchers, encouraging daily use."
+      }
+    ]
+  },
+  "cta": {
+    "title": "A simple scan",
+    "subtitle": "of your prescription",
+    "result": "to make your life healthier",
+    "download": "Get it on Google Play",
+    "try_now": "Try it now"
+  },
+  "footer": {
+    "tagline": "Use wisely, take precisely",
+    "contact": {
+      "title": "Contact",
+      "wechat": "WeChat: maryle_23",
+      "email": "lethuthuy.contact@gmail.com"
+    },
+    "links": {
+      "title": "Links",
+      "home": "Home",
+      "about": "About",
+      "features": "Features",
+      "download": "Download"
+    },
+    "copyright": "2024 MediFind. All rights reserved."
+  },
+  "language": {
+    "en": "English",
+    "vi": "Vietnamese",
+    "toggle": "Switch language"
+  }
+}

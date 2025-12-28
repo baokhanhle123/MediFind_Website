@@ -1,0 +1,311 @@
+{
+  "nav": {
+    "home": "Trang chu",
+    "problem": "Van de",
+    "solution": "Giai phap",
+    "technology": "Cong nghe",
+    "team": "Doi ngu",
+    "download": "Tai xuong"
+  },
+  "hero": {
+    "tagline": "Dung dung cach, uong dung lieu",
+    "title": "MediFind+",
+    "subtitle": "Nen tang giup moi nguoi dua ra quyet dinh cham soc suc khoe thong minh va an toan hon",
+    "badge": "Suc khoe so",
+    "cta_download": "Tai ung dung",
+    "cta_learn": "Tim hieu them"
+  },
+  "problem": {
+    "title": "Van de",
+    "source": "Nguon du lieu: Bo Y te Viet Nam, WHO",
+    "stats": {
+      "arbitrary_use": "88-91%",
+      "arbitrary_use_desc": "Nguoi dan tu y su dung khang sinh",
+      "pharmacies": "76%",
+      "pharmacies_desc": "Nha thuoc ban khang sinh khong can don",
+      "worldwide": "Thu 11",
+      "worldwide_desc": "Viet Nam dung thu 11 the gioi ve tieu thu khang sinh",
+      "western_pacific": "Thu 2",
+      "western_pacific_desc": "Viet Nam dung thu 2 khu vuc Tay Thai Binh Duong ve so ca tu vong do khang khang sinh"
+    },
+    "global": {
+      "title": "Toan cau",
+      "description": "Theo WHO, tinh trang khang khang sinh dang gia tang va nguy hiem khong kem dai dich COVID-19.",
+      "deaths": "Moi nam, khoang 700.000 nguoi tren the gioi tu vong vi khang khang sinh. Con so nay co the tang len 10 trieu nguoi vao nam 2050 ~ chi mot con ho hay mot vet cat tren da cung co the gay tu vong."
+    },
+    "issues": {
+      "misinformation": "Thong tin sai lech ve thuoc",
+      "continuity": "Tinh lien tuc cham soc kem",
+      "engagement": "Su tham gia thap vao phong benh"
+    }
+  },
+  "about": {
+    "title": "Ve chung toi",
+    "founded": "MediFind duoc thanh lap boi nhom sinh vien tu Truong Dai hoc Bach Khoa TP.HCM va Truong Dai hoc Kinh te TP.HCM (UEH)",
+    "description": "MediFind la ung dung su dung cong nghe tri tue nhan tao de nhan dien thuoc tu hinh anh hoac van ban don thuoc. Ung dung cung cap huong dan su dung thuoc an toan va loi khuyen phu hop voi tinh trang suc khoe cua tung nguoi.",
+    "features": "Ung dung con co cac tinh nang huu ich nhu nhac uong thuoc, chat hoi dap, va ban do tim nha thuoc gan nhat, giup viec su dung ung dung de dang hon cho moi nguoi.",
+    "first_in_vietnam": "MediFind la ung dung dau tien tai Viet Nam cho phep nguoi dung nhan dien don thuoc qua hinh anh va van ban so."
+  },
+  "solution": {
+    "title": "Giai phap",
+    "stakeholders": {
+      "government": {
+        "title": "Chinh phu",
+        "items": [
+          "Mo rong chien dich phong benh",
+          "Ho tro muc tieu suc khoe so quoc gia",
+          "Tiep can nguoi dan qua kenh chinh thuc"
+        ]
+      },
+      "hospitals": {
+        "title": "Benh vien",
+        "items": [
+          "Tang cuong tinh lien tuc cham soc",
+          "Tong hop don thuoc va lich su dung thuoc mot noi",
+          "Tao nguon doanh thu moi cho co so y te"
+        ]
+      },
+      "clinics": {
+        "title": "Phong kham & Nha thuoc",
+        "items": [
+          "Lam cau noi ket noi nguoi dung voi nha cung cap uy tin",
+          "Ho tro dat thuoc nhanh qua doi tac (VD: Grab)",
+          "Tao nguon doanh thu moi cho co so y te"
+        ]
+      },
+      "pharma": {
+        "title": "Nha san xuat duoc pham",
+        "items": [
+          "Ma QR tren vi thuoc lien ket den thong tin thuoc da xac minh",
+          "\"De biet them, hoi MediFind\" tro thanh diem huong dan chung",
+          "Bien moi hop thuoc thanh kenh giao duc uy tin",
+          "Truy cap phan tich du lieu an danh co gia tri"
+        ]
+      },
+      "users": {
+        "title": "Nguoi dung",
+        "items": [
+          "Thong tin suc khoe ca nhan hoa - Theo doi BMI & canh bao loi song",
+          "Chi so moi truong - Thong tin chat luong khong khi theo thoi gian thuc",
+          "Goi y nha thuoc - Tim nha thuoc uy tin gan nhat",
+          "So suc khoe so - Theo doi lich su dung thuoc",
+          "Game hoa & Phan thuong - Check-in hang ngay nhan xu"
+        ]
+      }
+    },
+    "features": {
+      "health_track": {
+        "title": "Theo doi suc khoe",
+        "description": "Theo doi nhip tim, canh bao qua lieu thuoc, trieu chung va tac dung phu"
+      },
+      "reminder": {
+        "title": "Nhac tu dong",
+        "description": "Khong bao gio quen uong thuoc voi nhac nho thong minh va lich trinh"
+      },
+      "pharmacy": {
+        "title": "Goi y nha thuoc",
+        "description": "Tim nha thuoc uy tin gan nhat voi khoang cach, danh gia va lien he"
+      },
+      "scan": {
+        "title": "Nhan dien thuoc",
+        "description": "Quet don thuoc bang cong nghe OCR-NLP de co thong tin thuoc ngay lap tuc"
+      },
+      "chatbot": {
+        "title": "Chatbot MediGPT",
+        "description": "Dat cau hoi suc khoe va nhan huong dan ca nhan hoa tu AI"
+      },
+      "history": {
+        "title": "Lich su tim kiem",
+        "description": "Theo doi tat ca thuoc ban da su dung va luu"
+      }
+    }
+  },
+  "technology": {
+    "title": "Cong nghe chu chot",
+    "modern": {
+      "title": "Cong nghe hien dai",
+      "items": ["Ky thuat OCR, NLP va LLM", "Phan tich Big Data"]
+    },
+    "data": {
+      "title": "Bo du lieu tu",
+      "drugbank": "Drugbank (~40k ban ghi)",
+      "umls": "UMLS - He thong ngon ngu y te thong nhat (~150k ban ghi)"
+    },
+    "solving": {
+      "title": "Giai quyet van de cap bach",
+      "description": "Nhan dien khang sinh tu tat ca van ban in va phan tich lieu luong"
+    },
+    "digital": {
+      "title": "Chuyen doi so",
+      "description": "So hoa lich su dung thuoc cua benh nhan"
+    },
+    "research": {
+      "title": "Tao mo hinh tu dau",
+      "description": "Su dung cac cong nghe tien tien khac nhau de tao mo hinh rieng",
+      "paper": "Bai bao cong bo tai Hoi nghi ACOMPA lan thu 17 nam 2023"
+    },
+    "architecture": {
+      "description": "Kien truc trung tam cua MediFind dua tren hai giai doan: Nhan dang ky tu quang hoc (OCR) va Xu ly ngon ngu tu nhien (NLP). Bang cach ket hop VietOCR va spaCy, sau qua trinh tinh chinh can than, chung toi da dat duoc do chinh xac cao trong viec xac dinh ten thuoc va khang sinh."
+    }
+  },
+  "team": {
+    "title": "Diem noi bat",
+    "mentors": {
+      "title": "Co van",
+      "sonia": {
+        "name": "Co Sonia",
+        "role": "Co van Kinh doanh"
+      },
+      "thoai": {
+        "name": "PGS. Thoai Nam",
+        "role": "Co van Ky thuat"
+      },
+      "xuan": {
+        "name": "ThS. Ha T Thanh Xuan",
+        "role": "Co van Y khoa"
+      }
+    },
+    "supervisor": {
+      "title": "Giam sat",
+      "khanh": {
+        "name": "Khanh Le",
+        "role": "Lap trinh vien AI"
+      }
+    },
+    "partners": {
+      "title": "Doi tac",
+      "hcmut_tbi": "Vuon uom Cong nghe Bach Khoa",
+      "vsi": "Vuon uom Khoi nghiep Viet (VSI)",
+      "hpc": "Trung tam Tinh toan Hieu nang cao Bach Khoa"
+    },
+    "awards": {
+      "title": "Danh hieu",
+      "list": [
+        {
+          "title": "Quan quan",
+          "description": "Cuoc thi y tuong khoi nghiep nganh y te - Dai hoc Y Ha Noi"
+        },
+        {
+          "title": "A quan 1",
+          "description": "FWD SpringboardX Student Challenge Dong Nam A"
+        },
+        {
+          "title": "A quan 2",
+          "description": "GBA Business Challenge"
+        },
+        {
+          "title": "A quan 1",
+          "description": "GDSC - Google Developer Student Clubs - Dai hoc Bach Khoa TP.HCM"
+        },
+        {
+          "title": "Giai Doi moi sang tao",
+          "description": "VietFuture - Hiep hoi Phan mem va Dich vu CNTT Viet Nam (VINASA)"
+        }
+      ]
+    },
+    "clinics": {
+      "title": "Phong kham chap nhan MediFind tai Viet Nam",
+      "list": [
+        "Phong kham Nhi - PGS.TS.BS Nguyen Thi Cu",
+        "Phong kham Nhi - BS Nguyen Manh Phu, Truong khoa Ho hap Nhi",
+        "Phong kham Noi tong hop - BS Nguyen Quang Hien",
+        "Phong kham Noi tong hop - BS Nguyen Van Tri",
+        "Phong kham Ai My - BS Bui Van Doan"
+      ]
+    }
+  },
+  "market": {
+    "title": "Tiem nang thi truong toan cau",
+    "government": {
+      "title": "Chien dich truyen thong duoc Chinh phu ho tro",
+      "description": "Y te can su tin tuong - su ung ho chinh thuc day nhanh viec chap nhan va dinh vi MediFind la nen tang an toan, uy tin, phu hop quoc gia."
+    },
+    "university": {
+      "title": "Hop tac voi truong y duoc",
+      "description": "Sinh vien duoc va y khoa lam dai su tren toan quoc, xac nhan va quang ba nen tang mot cach tu nhien."
+    },
+    "pharmacy": {
+      "title": "Tich hop nha thuoc va phong kham",
+      "description": "Moi diem tiep xuc tu vi thuoc den quay nha thuoc deu tro thanh diem chuyen doi."
+    },
+    "gamification": {
+      "title": "Game hoa",
+      "description": "Phan thuong hang ngay thuc day su gan ket lau dai, bien thoi quen suc khoe thanh thoi quen nhat quan."
+    }
+  },
+  "revenue": {
+    "title": "Mo hinh Doanh thu",
+    "items": [
+      {
+        "title": "Hop tac Chinh phu va Truong Dai hoc",
+        "description": "Trien khai chien dich suc khoe duoc tai tro voi chinh phu va truong y duoc de thuc day doanh thu va su chap nhan tren toan quoc."
+      },
+      {
+        "title": "Hop tac B2B Duoc pham",
+        "description": "Tan dung MediFind cho giao duc san pham, tich hop ma QR va phan tich an danh."
+      },
+      {
+        "title": "Hoa hong tu Phong kham va Nha thuoc",
+        "description": "Doanh thu giao dich tu dat thuoc va thuc pham chuc nang qua tich hop giao hang."
+      },
+      {
+        "title": "Dich vu Y te So",
+        "description": "Tu van bac si truc tuyen, ke hoach cham soc ca nhan va tinh nang cao cap."
+      }
+    ]
+  },
+  "differentiator": {
+    "title": "Diem khac biet",
+    "subtitle": "MediFind la ung dung dau tien tai Viet Nam cho phep nguoi dung nhan dien don thuoc qua hinh anh va van ban so.",
+    "items": [
+      {
+        "title": "Mien phi giai doan dau",
+        "description": "MediFind khong thu phi nguoi dung - phu hop tai Viet Nam."
+      },
+      {
+        "title": "Nhanh & Chinh xac",
+        "description": "Nhan dien thuoc qua hinh anh va van ban thay vi go. Ty le chinh xac: ~95%"
+      },
+      {
+        "title": "Ung dung Da chuc nang",
+        "description": "Cung cap tinh nang tien tien nhu nhac nho, chatbot, goi y nha thuoc."
+      },
+      {
+        "title": "Cong nghe Cap nhat",
+        "description": "Su dung cac cong nghe nhu OCR, NLP, Phan tich Big Data."
+      },
+      {
+        "title": "Giao duc hanh vi khach hang",
+        "description": "Tao he thong diem de nguoi dung tich va doi diem lay voucher, khuyen khich su dung hang ngay."
+      }
+    ]
+  },
+  "cta": {
+    "title": "Mot lan quet don gian",
+    "subtitle": "don thuoc cua ban",
+    "result": "de cuoc song khoe manh hon",
+    "download": "Tai tren Google Play",
+    "try_now": "Thu ngay"
+  },
+  "footer": {
+    "tagline": "Dung dung cach, uong dung lieu",
+    "contact": {
+      "title": "Lien he",
+      "wechat": "WeChat: maryle_23",
+      "email": "lethuthuy.contact@gmail.com"
+    },
+    "links": {
+      "title": "Lien ket",
+      "home": "Trang chu",
+      "about": "Gioi thieu",
+      "features": "Tinh nang",
+      "download": "Tai xuong"
+    },
+    "copyright": "2024 MediFind. Moi quyen duoc bao luu."
+  },
+  "language": {
+    "en": "Tieng Anh",
+    "vi": "Tieng Viet",
+    "toggle": "Chuyen ngon ngu"
+  }
+}

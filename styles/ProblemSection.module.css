@@ -1,0 +1,148 @@
+.section {
+  background: var(--background-alt);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.globalBox {
+  background: var(--medifind-red);
+  color: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  margin-bottom: 3rem;
+}
+
+.globalTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.globalDescription {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.globalDescription strong {
+  font-weight: 700;
+}
+
+.globalDeaths {
+  font-size: 0.95rem;
+  opacity: 0.9;
+  line-height: 1.7;
+}
+
+.issuesSection {
+  margin-bottom: 3rem;
+}
+
+.issuesTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--medifind-red);
+  margin-bottom: 1.5rem;
+}
+
+.issuesList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.issuesList li {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  font-size: 1.1rem;
+  color: var(--text-primary);
+}
+
+.issueIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--medifind-red-light);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.aboutBox {
+  background: white;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+}
+
+.aboutTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--medifind-red);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.aboutTitle::before {
+  content: "+";
+  font-weight: 300;
+}
+
+.aboutText {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+
+.aboutFeatures {
+  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+}
+
+.aboutHighlight {
+  font-size: 1rem;
+  color: var(--medifind-red);
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .globalBox {
+    padding: 1.5rem;
+  }
+
+  .aboutBox {
+    padding: 1.5rem;
+  }
+}

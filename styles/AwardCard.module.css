@@ -1,0 +1,64 @@
+.card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: var(--background);
+  border: 1px solid #eee;
+  transition: all var(--transition-normal);
+}
+
+.card:hover {
+  transform: translateX(5px);
+  box-shadow: var(--shadow-sm);
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  flex: 1;
+}
+
+.title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin: 0 0 0.25rem;
+}
+
+.description {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Award type colors */
+.gold .iconWrapper {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+  color: white;
+}
+
+.silver .iconWrapper {
+  background: linear-gradient(135deg, #C0C0C0, #A0A0A0);
+  color: white;
+}
+
+.bronze .iconWrapper {
+  background: linear-gradient(135deg, #CD7F32, #B8860B);
+  color: white;
+}
+
+.special .iconWrapper {
+  background: linear-gradient(135deg, var(--medifind-red), var(--medifind-red-light));
+  color: white;
+}
