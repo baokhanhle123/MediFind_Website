@@ -27,6 +27,53 @@ Before implementing anything, let's discuss first to make sure we're aligned on 
 - Use `AskUserQuestion` tool when needed
 - Better to clarify than to redo work
 
+## UI/UX Review Process
+
+### When to Invoke the UI/UX Reviewer
+**IMPORTANT:** Proactively use the `ui-ux-playwright-reviewer` agent for UI-related work. Don't wait for the user to ask.
+
+Invoke the reviewer when:
+- After implementing new UI components
+- After making significant visual or UX changes
+- When adding new page sections or layouts
+- Before considering a UI implementation task complete
+- When user shares new component code (proactive review)
+
+### Review Workflow
+1. **Invoke the Agent**
+   - Use the Task tool with `subagent_type: "ui-ux-playwright-reviewer"`
+   - Provide clear context about what was implemented
+   - Specify any particular concerns or areas to focus on
+
+2. **Analyze Feedback**
+   - Review the agent's feedback on visual design, user experience, and accessibility
+   - Prioritize critical issues (accessibility violations, broken functionality)
+   - Consider suggestions for improvements
+
+3. **Implement Improvements**
+   - Address accessibility issues immediately (WCAG compliance is mandatory)
+   - Fix visual inconsistencies and UX problems
+   - Make enhancements that significantly improve user experience
+
+4. **Iterate if Needed**
+   - Re-run the reviewer after significant changes
+   - Continue iterating until UI/UX meets quality standards
+   - Document any deliberate choices that differ from suggestions
+
+### Review Focus Areas
+The ui-ux-playwright-reviewer agent will assess:
+- **Visual Design:** Layout, spacing, typography, color usage, responsiveness
+- **User Experience:** Navigation flow, interaction patterns, feedback mechanisms
+- **Accessibility:** WCAG compliance, keyboard navigation, screen reader support, ARIA labels
+- **Consistency:** Adherence to design system and brand guidelines
+- **Performance:** Animation smoothness, loading states, visual polish
+
+### Integration with Development Process
+- Review happens AFTER implementation but BEFORE marking tasks complete
+- Part of the "Think Harder" process for UI work
+- Blocked by critical accessibility or UX issues until resolved
+- Iterate on feedback to achieve high-quality results
+
 ## Tech Stack
 - **Framework:** Next.js 15.1.7 with App Router
 - **Styling:** CSS Modules + Tailwind CSS

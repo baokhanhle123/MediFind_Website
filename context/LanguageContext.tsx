@@ -42,6 +42,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     const saved = localStorage.getItem("medifind-language") as Language;
     if (saved && (saved === "en" || saved === "vi")) {
       setLanguageState(saved);
+      document.documentElement.lang = saved; // Sync HTML lang attribute on mount
     }
   }, []);
 
