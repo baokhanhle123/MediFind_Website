@@ -3,34 +3,52 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
 import en from "@/locales/en.json";
 import vi from "@/locales/vi.json";
-
-type Language = "en" | "vi";
-type Translations = typeof en;
-
-interface LanguageContextType {
-  language: Language;
-  setLanguage: (lang: Language) => void;
-  toggleLanguage: () => void;
-  t: (key: string) => unknown;
-}
+import type {
+  Language,
+  Translations,
+  LanguageContextType,
+  TranslateReturnType,
+  TranslationValue,
+} from "@/types/i18n";
 
 const translations: Record<Language, Translations> = { en, vi };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-function getNestedValue(obj: Record<string, unknown>, path: string): unknown {
+/**
+ * Retrieves a nested value from translation object using dot notation
+ * @param obj - Translation object
+ * @param path - Dot-separated path (e.g., "nav.home" or "solution.features.scan.title")
+ * @returns The translation value (string or string array), or the path key if not found
+ */
+function getNestedValue(
+  obj: Record<string, TranslationValue>,
+  path: string
+): TranslateReturnType {
   const keys = path.split(".");
-  let result: unknown = obj;
+  let result: TranslationValue = obj;
 
   for (const key of keys) {
-    if (result && typeof result === "object" && key in result) {
-      result = (result as Record<string, unknown>)[key];
+    if (result && typeof result === "object" && !Array.isArray(result) && key in result) {
+      result = (result as Record<string, TranslationValue>)[key];
+    } else if (Array.isArray(result)) {
+      // If we hit an array, return it
+      return result;
     } else {
-      return path; // Return key if path not found
+      // Return key if path not found (fallback)
+      return path;
     }
   }
 
-  return result;
+  // Ensure we return either string or string[]
+  if (typeof result === "string") {
+    return result;
+  } else if (Array.isArray(result)) {
+    return result;
+  } else {
+    // If we got an object, return the path as fallback
+    return path;
+  }
 }
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
@@ -57,8 +75,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     setLanguage(newLang);
   };
 
-  const t = (key: string): unknown => {
-    return getNestedValue(translations[language] as unknown as Record<string, unknown>, key);
+  const t = (key: string): TranslateReturnType => {
+    return getNestedValue(
+      translations[language] as unknown as Record<string, TranslationValue>,
+      key
+    );
   };
 
   // Prevent hydration mismatch
@@ -69,7 +90,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
           language: "en",
           setLanguage: () => {},
           toggleLanguage: () => {},
-          t: (key: string): unknown => getNestedValue(en as unknown as Record<string, unknown>, key),
+          t: (key: string): TranslateReturnType =>
+            getNestedValue(en as unknown as Record<string, TranslationValue>, key),
         }}
       >
         {children}
@@ -84,6 +106,37 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   );
 }
 
+/**
+ * Hook to access the language context
+ *
+ * @description
+ * Provides access to the current language, language setter, toggle function,
+ * and translation function. Must be used within a LanguageProvider.
+ *
+ * @throws {Error} If used outside of a LanguageProvider
+ *
+ * @returns {LanguageContextType} Language context value containing:
+ * - `language`: Current language ("en" | "vi")
+ * - `setLanguage`: Function to set a specific language
+ * - `toggleLanguage`: Function to toggle between languages
+ * - `t`: Translation function that accepts dot-notation keys
+ *
+ * @example
+ * ```tsx
+ * function MyComponent() {
+ *   const { language, toggleLanguage, t } = useLanguage();
+ *
+ *   return (
+ *     <div>
+ *       <p>{t("nav.home")}</p>
+ *       <button onClick={toggleLanguage}>
+ *         Switch to {language === "en" ? "Vietnamese" : "English"}
+ *       </button>
+ *     </div>
+ *   );
+ * }
+ * ```
+ */
 export function useLanguage() {
   const context = useContext(LanguageContext);
   if (context === undefined) {

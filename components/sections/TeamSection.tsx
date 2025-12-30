@@ -102,9 +102,9 @@ export default function TeamSection() {
             <h3 className={styles.subsectionTitle}>{String(t("team.awards.title"))}</h3>
             <div className={styles.awardsGrid}>
               {(() => {
-                const awards = t("team.awards.list");
+                const awards = t("team.awards.list") as unknown as Array<{ title: string; description: string }>;
                 if (Array.isArray(awards)) {
-                  return awards.map((award: { title: string; description: string }, index: number) => (
+                  return awards.map((award, index: number) => (
                     <AwardCard
                       key={index}
                       title={award.title}

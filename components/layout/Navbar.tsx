@@ -2,17 +2,10 @@
 
 import React, { useState, useEffect } from "react";
 import { useLanguage } from "@/context/LanguageContext";
-import LanguageToggle from "@/components/ui/LanguageToggle";
-import Button from "@/components/ui/Button";
+import { LanguageToggle, Button } from "@/components/ui";
+import { Logo } from "@/components/ui/icons";
+import { NAV_LINKS, NAVBAR_CONFIG } from "@/constants";
 import styles from "@/styles/Navbar.module.css";
-
-const navLinks = [
-  { key: "home", href: "#hero" },
-  { key: "problem", href: "#problem" },
-  { key: "solution", href: "#solution" },
-  { key: "technology", href: "#technology" },
-  { key: "team", href: "#team" },
-];
 
 export default function Navbar() {
   const { t } = useLanguage();
@@ -29,11 +22,11 @@ export default function Navbar() {
     if (!mounted) return; // Guard: only run after client-side mount
 
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > NAVBAR_CONFIG.SCROLL_THRESHOLD);
     };
 
     // Set initial scroll state after mount
-    setIsScrolled(window.scrollY > 50);
+    setIsScrolled(window.scrollY > NAVBAR_CONFIG.SCROLL_THRESHOLD);
 
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -43,10 +36,9 @@ export default function Navbar() {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      const navbarHeight = 80;
       const elementPosition = element.getBoundingClientRect().top + window.scrollY;
       window.scrollTo({
-        top: elementPosition - navbarHeight,
+        top: elementPosition - NAVBAR_CONFIG.NAVBAR_HEIGHT,
         behavior: "smooth",
       });
     }
@@ -54,27 +46,19 @@ export default function Navbar() {
   };
 
   return (
-    <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
+    <nav
+      className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}
+      role="navigation"
+      aria-label="Main navigation"
+    >
       <div className={styles.container}>
-        <a href="#hero" className={styles.logo} onClick={(e) => handleNavClick(e, "#hero")}>
-          <svg
-            width="32"
-            height="32"
-            viewBox="0 0 100 100"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M50 90C50 90 85 65 85 40C85 20 70 10 50 25C30 10 15 20 15 40C15 65 50 90 50 90Z"
-              fill="var(--medifind-red)"
-            />
-            <path
-              d="M50 35V55M40 45H60"
-              stroke="white"
-              strokeWidth="6"
-              strokeLinecap="round"
-            />
-          </svg>
+        <a
+          href="#hero"
+          className={styles.logo}
+          onClick={(e) => handleNavClick(e, "#hero")}
+          aria-label="MediFind+ home"
+        >
+          <Logo className="w-8 h-8" aria-hidden={true} />
           <span className={styles.logoText}>
             <span className={styles.medi}>Medi</span>
             <span className={styles.find}>Find</span>
@@ -83,7 +67,7 @@ export default function Navbar() {
         </a>
 
         <div className={`${styles.navLinks} ${isMobileMenuOpen ? styles.mobileOpen : ""}`}>
-          {navLinks.map((link) => (
+          {NAV_LINKS.map((link) => (
             <a
               key={link.key}
               href={link.href}
@@ -105,22 +89,25 @@ export default function Navbar() {
         <button
           className={`${styles.mobileToggle} ${isMobileMenuOpen ? styles.open : ""}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          aria-label="Toggle menu"
+          aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
         </button>
       </div>
 
       {isMobileMenuOpen && (
-        <div className={styles.mobileMenu}>
-          {navLinks.map((link) => (
+        <div id="mobile-navigation" className={styles.mobileMenu} role="menu">
+          {NAV_LINKS.map((link) => (
             <a
               key={link.key}
               href={link.href}
               className={styles.mobileLink}
               onClick={(e) => handleNavClick(e, link.href)}
+              role="menuitem"
             >
               {String(t(`nav.${link.key}`))}
             </a>
