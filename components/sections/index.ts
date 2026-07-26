@@ -2,6 +2,7 @@
  * Barrel export for page section components
  */
 
+export { default as AppShowcase } from "./AppShowcase";
 export { default as CTASection } from "./CTASection";
 export { default as HeroSection } from "./HeroSection";
 export { default as ProblemSection } from "./ProblemSection";

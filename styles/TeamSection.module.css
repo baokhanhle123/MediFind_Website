@@ -58,16 +58,23 @@
   box-shadow: var(--shadow-md);
 }
 
-.partnerIcon {
-  width: 60px;
-  height: 60px;
-  background: white;
-  border-radius: 50%;
+/*
+ * The three marks have very different proportions — two are square, HPC's is
+ * roughly 2.7:1 — so this is a fixed-height row rather than a circle. A circle
+ * cropped the wide one to illegibility.
+ */
+.partnerLogo {
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--medifind-red);
-  box-shadow: var(--shadow-sm);
+}
+
+.partnerLogoImage {
+  max-height: 64px;
+  width: auto;
+  max-width: 150px;
+  object-fit: contain;
 }
 
 .partnerCard span {
@@ -81,6 +88,13 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1rem;
+}
+
+/* The award count is odd (7), so the last card would otherwise sit alone in the
+   left column with a gap beside it. No-op below 900px, where the grid is
+   already a single column. */
+.awardsGrid > *:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
 /* Clinics */

@@ -1,7 +1,7 @@
 # CLAUDE.md - Instructions for Claude Code
 
 ## Project Overview
-This is the **MediFind Portfolio Website** - a Next.js application showcasing MediFind, an AI-powered healthcare platform that helps people make smarter, safer healthcare decisions through prescription scanning.
+This is the **MediFind Portfolio Website** - a Next.js application showcasing MediFind, an AI-powered medication-safety platform that scans prescriptions and medicine packaging. It serves two audiences: healthcare professionals (pharmacists, physicians, pharmacy staff) verifying what they dispense, and patients and families managing medication at home.
 
 ## Interaction Guidelines
 

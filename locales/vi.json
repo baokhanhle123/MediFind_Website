@@ -22,12 +22,8 @@
     "subtitle": "Nền tảng thông minh giúp dược sĩ, bác sĩ và gia đình đưa ra quyết định dùng thuốc an toàn và chính xác hơn",
     "badge": "Sức khỏe số",
     "cta_learn": "Tìm hiểu thêm",
-    "mockup": {
-      "reminder": "Nhắc uống thuốc",
-      "reminder_action": "Thiết lập ngay",
-      "scan": "Quét đơn thuốc",
-      "chatbot": "MediGPT",
-      "chatbot_desc": "Trợ lý ảo hỗ trợ bởi ChatGPT"
+    "screenshot": {
+      "alt": "Màn hình nhắc uống thuốc của ứng dụng MediFind, hiển thị liều Paracetamol sắp tới lúc 2:45 chiều và liều Phospholugel đã xác nhận trước đó"
     },
     "cta_demo": "Đăng ký dùng thử"
   },
@@ -153,6 +149,32 @@
       "history": {
         "title": "Lịch sử tìm kiếm",
         "description": "Theo dõi tất cả thuốc bạn đã sử dụng và lưu"
+      }
+    }
+  },
+  "showcase": {
+    "title": "Bên trong ứng dụng",
+    "subtitle": "Các màn hình từ phiên bản hiện tại",
+    "screens": {
+      "drug_details": {
+        "caption": "Mỗi loại thuốc được giải thích bằng ngôn ngữ dễ hiểu, kèm thành phần và số đăng ký",
+        "alt": "Màn hình chi tiết thuốc Phospholugel, hiển thị nhà sản xuất, công dụng, thành phần và số đăng ký của thuốc"
+      },
+      "home": {
+        "caption": "Toàn bộ liều thuốc trong ngày trong một màn hình, liều kế tiếp luôn hiển thị",
+        "alt": "Màn hình chính của ứng dụng với lời chào, bảng tin sức khỏe và dòng thời gian các thuốc đã lên lịch trong ngày"
+      },
+      "lookup": {
+        "caption": "Tra cứu và tìm thuốc theo tên hoặc theo nhóm",
+        "alt": "Màn hình tra cứu thuốc hiển thị lưới các nhóm gồm thuốc kháng axit, thực phẩm bổ sung, vi lượng đồng căn và chăm sóc tiểu đường"
+      },
+      "chat": {
+        "caption": "MediGPT trả lời các câu hỏi tiếp theo bằng ngôn ngữ đời thường",
+        "alt": "Màn hình trò chuyện MediGPT hiển thị cuộc hội thoại về các cách phòng ngừa lây nhiễm COVID-19"
+      },
+      "pharmacy": {
+        "caption": "Tìm nhà thuốc và phòng khám uy tín gần bạn, đồng thời theo dõi lịch hẹn",
+        "alt": "Màn hình bản đồ hiển thị các nhà thuốc và phòng khám nha khoa gần đó, phía trên là danh sách các lịch hẹn sắp tới"
       }
     }
   },

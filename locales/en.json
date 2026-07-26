@@ -22,12 +22,8 @@
     "subtitle": "An intelligent platform that helps pharmacists, physicians, and families make safer, smarter medication decisions",
     "badge": "Digital Health",
     "cta_learn": "Learn More",
-    "mockup": {
-      "reminder": "Medication reminder",
-      "reminder_action": "Set up now",
-      "scan": "Scan a prescription",
-      "chatbot": "MediGPT",
-      "chatbot_desc": "Chatbot powered by ChatGPT"
+    "screenshot": {
+      "alt": "The MediFind app reminder screen, showing an upcoming dose of Paracetamol scheduled for 2:45 pm and a confirmed earlier dose of Phospholugel"
     },
     "cta_demo": "Request a Demo"
   },
@@ -153,6 +149,32 @@
       "history": {
         "title": "Search History",
         "description": "Keep track of all medicines you have used and saved"
+      }
+    }
+  },
+  "showcase": {
+    "title": "Inside the app",
+    "subtitle": "Screens from the current build",
+    "screens": {
+      "drug_details": {
+        "caption": "Every medicine explained in plain language, with ingredients and registration details",
+        "alt": "Drug details screen for Phospholugel, showing the manufacturer, what the medicine treats, its ingredients and its registration number"
+      },
+      "home": {
+        "caption": "The day's doses at a glance, with the next one always in view",
+        "alt": "App home screen with a greeting, a health news carousel and a timeline of the day's scheduled medicines"
+      },
+      "lookup": {
+        "caption": "Browse and search medicines by name or category",
+        "alt": "Medicine lookup screen showing a grid of categories including antacids, supplements, homeopathy and diabetes care"
+      },
+      "chat": {
+        "caption": "MediGPT answers follow-up questions in everyday language",
+        "alt": "MediGPT chat screen showing a conversation about ways to prevent COVID-19 infection"
+      },
+      "pharmacy": {
+        "caption": "Find trusted pharmacies and clinics nearby, and keep track of appointments",
+        "alt": "Map screen showing nearby pharmacies and dental clinics above a list of upcoming appointments"
       }
     }
   },

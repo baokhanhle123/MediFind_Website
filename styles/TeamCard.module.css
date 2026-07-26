@@ -24,14 +24,19 @@
   object-fit: cover;
 }
 
+/*
+ * Shown when a person has no photograph. Brand-tinted rather than the default
+ * grey so it reads as "no photo yet" instead of a failed image load.
+ */
 .placeholder {
   width: 100%;
   height: 100%;
-  background: var(--background-alt);
+  background: linear-gradient(135deg, #fdeef1, #f7dfe4);
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--text-secondary);
+  color: var(--medifind-red);
+  opacity: 0.75;
 }
 
 .name {

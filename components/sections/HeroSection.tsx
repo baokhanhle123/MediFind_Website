@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import Button from "@/components/ui/Button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { Logo } from "@/components/ui/icons";
 import styles from "@/styles/HeroSection.module.css";
 
 export default function HeroSection() {
@@ -34,28 +34,21 @@ export default function HeroSection() {
 
         <AnimatedSection className={styles.visual} delay={200}>
           <div className={styles.phoneContainer}>
-            {/* Phone mockup with app screens */}
+            {/* Real app screenshot inside the phone frame. The screenshot is
+                English-only, so the alt text carries the meaning in both
+                locales — it is the only part a Vietnamese or screen-reader
+                user can actually read. */}
             <div className={styles.phone}>
               <div className={styles.phoneScreen}>
-                <div className={styles.appPreview}>
-                  <div className={styles.appHeader}>
-                    <Logo className="w-6 h-6" aria-hidden={true} />
-                    <span>MediFind+</span>
-                  </div>
-                  <div className={styles.appContent}>
-                    <div className={styles.featureBox}>
-                      <span>{String(t("hero.mockup.reminder"))}</span>
-                      <small>{String(t("hero.mockup.reminder_action"))}</small>
-                    </div>
-                    <div className={styles.featureBoxBlue}>
-                      <span>{String(t("hero.mockup.scan"))}</span>
-                    </div>
-                    <div className={styles.chatPreview}>
-                      <span>{String(t("hero.mockup.chatbot"))}</span>
-                      <small>{String(t("hero.mockup.chatbot_desc"))}</small>
-                    </div>
-                  </div>
-                </div>
+                <Image
+                  src="/screens/reminder.png"
+                  alt={String(t("hero.screenshot.alt"))}
+                  width={518}
+                  height={1104}
+                  className={styles.screenshot}
+                  sizes="(max-width: 480px) 200px, (max-width: 900px) 220px, 280px"
+                  priority
+                />
               </div>
             </div>
             {/* Decorative elements */}

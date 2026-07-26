@@ -64,6 +64,12 @@
   padding: 2rem;
   border-radius: 16px;
   box-shadow: var(--shadow-sm);
+  /* Panels hold 4 or 5 benefits. Without a floor, switching to the 5-item
+     "Patients & Families" tab grows the panel and shoves the rest of the page
+     down mid-interaction. Reserve the tallest panel's height so the tabs swap
+     in place. Only set where the bullets stay on one line — below 900px they
+     wrap unpredictably and a fixed floor would strand whitespace instead. */
+  min-height: 248px;
 }
 
 .benefitsList {
@@ -126,5 +132,6 @@
 
   .tabContent {
     padding: 1.5rem;
+    min-height: 0;
   }
 }
