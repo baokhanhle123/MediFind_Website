@@ -78,7 +78,3 @@ export interface IconProps {
   "aria-label"?: string;
   "aria-hidden"?: boolean;
 }
-
-export interface LogoProps extends IconProps {
-  variant?: "default" | "white";
-}

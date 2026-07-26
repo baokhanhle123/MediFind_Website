@@ -29,22 +29,18 @@
   text-decoration: none;
 }
 
-.logoText {
-  font-size: 1.5rem;
-  font-weight: 700;
+/* Height-locked so the navbar bar height stays fixed; width follows the
+   wordmark's own 1537:400 ratio. */
+.logoImage {
+  height: 34px;
+  width: auto;
+  display: block;
 }
 
-.medi {
-  color: var(--medifind-red);
-}
-
-.find {
-  color: var(--text-primary);
-}
-
-.plus {
-  color: var(--medifind-red);
-  font-weight: 300;
+@media (max-width: 600px) {
+  .logoImage {
+    height: 28px;
+  }
 }
 
 .navLinks {

@@ -1,9 +1,9 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import { LanguageToggle, Button } from "@/components/ui";
-import { Logo } from "@/components/ui/icons";
 import { NAV_LINKS, NAVBAR_CONFIG } from "@/constants";
 import styles from "@/styles/Navbar.module.css";
 
@@ -110,12 +110,17 @@ export default function Navbar() {
           onClick={(e) => handleNavClick(e, "#hero")}
           aria-label="MediFind+ home"
         >
-          <Logo className="w-8 h-8" aria-hidden={true} />
-          <span className={styles.logoText}>
-            <span className={styles.medi}>Medi</span>
-            <span className={styles.find}>Find</span>
-            <span className={styles.plus}>+</span>
-          </span>
+          {/* The banner is the complete lockup — the heart forms the "M" — so it
+              replaces the old icon-plus-text pair. The link's aria-label already
+              names it, so the image itself is decorative. */}
+          <Image
+            src="/brand/medifind-wordmark.png"
+            alt=""
+            width={1537}
+            height={400}
+            className={styles.logoImage}
+            priority
+          />
         </a>
 
         <div className={styles.navLinks}>

@@ -1,10 +1,10 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { useLanguage } from "@/context/LanguageContext";
 import Button from "@/components/ui/Button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
-import { Logo } from "@/components/ui/icons";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, DEMO_REQUEST_HREF } from "@/constants";
 import styles from "@/styles/CTASection.module.css";
 
@@ -16,12 +16,13 @@ export default function CTASection() {
       <div className={styles.container}>
         <AnimatedSection>
           <div className={styles.logo}>
-            <Logo className="w-20 h-20" aria-hidden={true} />
-            <span className={styles.logoText}>
-              <span className={styles.medi}>Medi</span>
-              <span className={styles.find}>Find</span>
-              <span className={styles.plus}>+</span>
-            </span>
+            <Image
+              src="/brand/medifind-wordmark.png"
+              alt="MediFind+"
+              width={1537}
+              height={400}
+              className={styles.logoImage}
+            />
           </div>
         </AnimatedSection>
 

@@ -1,3 +1,5 @@
+import { readFile } from "node:fs/promises";
+import path from "node:path";
 import { ImageResponse } from "next/og";
 import { LOCALES, isLocale } from "@/constants/locales";
 import { translateString } from "@/utils/i18n";
@@ -32,6 +34,11 @@ export default async function OpengraphImage({
   const tagline = translateString(lang, "hero.tagline");
   const description = translateString(lang, "meta.og_description");
 
+  // ImageResponse cannot resolve a public/ URL — it has no origin at build
+  // time — so the mark is read off disk and inlined.
+  const mark = await readFile(path.join(process.cwd(), "public/brand/medifind-icon.png"));
+  const markSrc = `data:image/png;base64,${mark.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -48,18 +55,21 @@ export default async function OpengraphImage({
         }}
       >
         <div style={{ display: "flex", alignItems: "center", gap: 28 }}>
-          <svg width="110" height="110" viewBox="0 0 100 100">
-            <path
-              d="M50 92C50 92 88 65 88 39C88 18 71 7 50 23C29 7 12 18 12 39C12 65 50 92 50 92Z"
-              fill="#FFFFFF"
-            />
-            <path
-              d="M50 33V57M38 45H62"
-              stroke="#C41E3A"
-              strokeWidth="10"
-              strokeLinecap="round"
-            />
-          </svg>
+          {/* The mark is red on transparent and the card is red, so it sits on a
+              white chip rather than being recoloured. */}
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              width: 132,
+              height: 132,
+              borderRadius: 30,
+              background: "#FFFFFF",
+            }}
+          >
+            <img src={markSrc} width={104} height={104} alt="" />
+          </div>
           <div style={{ display: "flex", fontSize: 96, fontWeight: 700, letterSpacing: -2 }}>
             MediFind+
           </div>

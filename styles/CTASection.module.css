@@ -17,22 +17,17 @@
   margin-bottom: 1.5rem;
 }
 
-.logoText {
-  font-size: 2.5rem;
-  font-weight: 700;
+.logoImage {
+  width: auto;
+  height: 72px;
+  max-width: 100%;
+  display: block;
 }
 
-.medi {
-  color: var(--medifind-red);
-}
-
-.find {
-  color: var(--text-primary);
-}
-
-.plus {
-  color: var(--medifind-red);
-  font-weight: 300;
+@media (max-width: 600px) {
+  .logoImage {
+    height: 52px;
+  }
 }
 
 .tagline {

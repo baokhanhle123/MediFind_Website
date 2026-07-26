@@ -43,6 +43,16 @@ export default function StructuredData({ locale, siteUrl }: StructuredDataProps)
         alternateName: "MediFind+",
         url: `${siteUrl}/${locale}`,
         email: CONTACT_EMAIL,
+        // Google reads Organization.logo for search and knowledge-panel
+        // branding. ImageObject with explicit dimensions rather than a bare
+        // URL, which is what the guidelines ask for.
+        logo: {
+          "@type": "ImageObject",
+          url: `${siteUrl}/brand/medifind-wordmark.png`,
+          width: 1537,
+          height: 400,
+        },
+        image: `${siteUrl}/brand/medifind-icon.png`,
         description: translateString(locale, "meta.description"),
         slogan: translateString(locale, "hero.tagline"),
         foundingLocation: {

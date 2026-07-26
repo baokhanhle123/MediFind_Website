@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
-import { Logo } from "@/components/ui/icons";
 import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, FOUNDED_YEAR } from "@/constants";
 import styles from "@/styles/Footer.module.css";
 
@@ -16,12 +16,15 @@ export default function Footer() {
       <div className={styles.container}>
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <Logo variant="white" className="w-10 h-10" aria-hidden={true} />
-            <span className={styles.logoText}>
-              <span className={styles.medi}>Medi</span>
-              <span className={styles.find}>Find</span>
-              <span className={styles.plus}>+</span>
-            </span>
+            {/* Light-on-dark variant: the footer sits on the red gradient, where
+                the standard red mark would be invisible. */}
+            <Image
+              src="/brand/medifind-wordmark-white.png"
+              alt="MediFind+"
+              width={1537}
+              height={400}
+              className={styles.logoImage}
+            />
           </div>
           <p className={styles.tagline}>{String(t("footer.tagline"))}</p>
         </div>

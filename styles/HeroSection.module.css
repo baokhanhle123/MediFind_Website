@@ -34,25 +34,30 @@
 }
 
 .title {
-  font-size: 5rem;
-  font-weight: 700;
   line-height: 1;
   margin-bottom: 1rem;
 }
 
-.medi {
-  color: var(--medifind-red);
+/* Was 5rem type; this height matches the old cap height so the hero rhythm
+   is unchanged. Capped by max-width so it cannot outgrow a narrow column. */
+.titleImage {
+  width: auto;
+  height: 88px;
+  max-width: 100%;
+  display: block;
 }
 
-.find {
-  color: var(--text-primary);
+@media (max-width: 900px) {
+  .titleImage {
+    height: 72px;
+    margin: 0 auto;
+  }
 }
 
-.plus {
-  color: var(--medifind-red);
-  font-weight: 300;
-  font-size: 4rem;
-  vertical-align: super;
+@media (max-width: 600px) {
+  .titleImage {
+    height: 56px;
+  }
 }
 
 .tagline {

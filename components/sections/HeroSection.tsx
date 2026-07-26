@@ -15,10 +15,18 @@ export default function HeroSection() {
       <div className={styles.container}>
         <AnimatedSection className={styles.content}>
           <span className={styles.badge}>{String(t("hero.badge"))}</span>
+          {/* Still an h1: the heading element and its accessible name are what
+              matter for document outline and SEO, and the alt carries the
+              wordmark text that the spans used to provide. */}
           <h1 className={styles.title}>
-            <span className={styles.medi}>Medi</span>
-            <span className={styles.find}>Find</span>
-            <span className={styles.plus}>+</span>
+            <Image
+              src="/brand/medifind-wordmark.png"
+              alt="MediFind+"
+              width={1537}
+              height={400}
+              className={styles.titleImage}
+              priority
+            />
           </h1>
           <p className={styles.tagline}>{String(t("hero.tagline"))}</p>
           <p className={styles.subtitle}>{String(t("hero.subtitle"))}</p>

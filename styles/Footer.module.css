@@ -34,22 +34,17 @@
   margin-bottom: 1rem;
 }
 
-.logoText {
-  font-size: 1.75rem;
-  font-weight: 700;
+.logoImage {
+  width: auto;
+  height: 44px;
+  max-width: 100%;
+  display: block;
 }
 
-.medi {
-  color: white;
-}
-
-.find {
-  color: rgba(255, 255, 255, 0.9);
-}
-
-.plus {
-  color: white;
-  font-weight: 300;
+@media (max-width: 600px) {
+  .logoImage {
+    height: 36px;
+  }
 }
 
 .tagline {
