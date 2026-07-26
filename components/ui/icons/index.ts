@@ -12,7 +12,6 @@ export {
   ChatbotIcon,
   HistoryIcon,
 } from "./FeatureIcons";
-export { GooglePlayIcon, QRCodeIcon } from "./SocialIcons";
 export {
   CheckIcon,
   InfoCircleIcon,

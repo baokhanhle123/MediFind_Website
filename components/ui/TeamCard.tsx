@@ -8,7 +8,7 @@ interface TeamCardProps {
   name: string;
   role: string;
   image?: string;
-  type?: "mentor" | "supervisor";
+  type?: "mentor" | "founder";
 }
 
 export default function TeamCard({

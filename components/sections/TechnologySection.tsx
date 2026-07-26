@@ -4,6 +4,7 @@ import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import SectionTitle from "@/components/ui/SectionTitle";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { PAPER } from "@/constants";
 import styles from "@/styles/TechnologySection.module.css";
 
 export default function TechnologySection() {
@@ -104,7 +105,36 @@ export default function TechnologySection() {
                 </div>
                 <h4>{String(t("technology.research.title"))}</h4>
                 <p>{String(t("technology.research.description"))}</p>
-                <span className={styles.paperBadge}>{String(t("technology.research.paper"))}</span>
+                {/* The publication is the strongest external validation on the
+                    page, so it links to the record rather than sitting as an
+                    unverifiable badge. */}
+                <cite className={styles.paperTitle}>
+                  {String(t("technology.research.paper_title"))}
+                </cite>
+                <span className={styles.paperBadge}>
+                  {String(t("technology.research.paper"))}
+                </span>
+                <a
+                  className={styles.paperLink}
+                  href={PAPER.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {String(t("technology.research.paper_cta"))}
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    aria-hidden="true"
+                  >
+                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                    <polyline points="15 3 21 3 21 9" />
+                    <line x1="10" y1="14" x2="21" y2="3" />
+                  </svg>
+                </a>
               </div>
             </div>
           </AnimatedSection>

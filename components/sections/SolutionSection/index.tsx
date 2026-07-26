@@ -40,7 +40,9 @@ export default function SolutionSection() {
         {/* Stakeholder Benefits */}
         <AnimatedSection delay={200}>
           <div className={styles.stakeholders}>
-            <h3 className={styles.stakeholdersTitle}>Solutions for Everyone</h3>
+            <h3 className={styles.stakeholdersTitle}>
+              {String(t("solution.stakeholders_title"))}
+            </h3>
 
             <StakeholderTabs activeTab={activeTab} onTabChange={setActiveTab} />
             <StakeholderContent activeTab={activeTab} />

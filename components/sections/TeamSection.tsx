@@ -6,24 +6,16 @@ import SectionTitle from "@/components/ui/SectionTitle";
 import TeamCard from "@/components/ui/TeamCard";
 import AwardCard from "@/components/ui/AwardCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import {
+  MENTOR_KEYS,
+  FOUNDER_KEYS,
+  AWARD_TYPES,
+  MAX_AWARDS_DISPLAY,
+} from "@/constants";
 import styles from "@/styles/TeamSection.module.css";
 
 export default function TeamSection() {
   const { t } = useLanguage();
-
-  const mentors = [
-    { key: "sonia" },
-    { key: "thoai" },
-    { key: "xuan" },
-  ];
-
-  const awardTypes: Array<"gold" | "silver" | "bronze" | "special"> = [
-    "gold",
-    "silver",
-    "bronze",
-    "special",
-    "special",
-  ];
 
   return (
     <section id="team" className={`${styles.section} section-padding`}>
@@ -37,11 +29,11 @@ export default function TeamSection() {
           <div className={styles.subsection}>
             <h3 className={styles.subsectionTitle}>{String(t("team.mentors.title"))}</h3>
             <div className={styles.mentorsGrid}>
-              {mentors.map((mentor) => (
+              {MENTOR_KEYS.map((key) => (
                 <TeamCard
-                  key={mentor.key}
-                  name={String(t(`team.mentors.${mentor.key}.name`))}
-                  role={String(t(`team.mentors.${mentor.key}.role`))}
+                  key={key}
+                  name={String(t(`team.mentors.${key}.name`))}
+                  role={String(t(`team.mentors.${key}.role`))}
                   type="mentor"
                 />
               ))}
@@ -49,16 +41,19 @@ export default function TeamSection() {
           </div>
         </AnimatedSection>
 
-        {/* Supervisor */}
+        {/* Founding team */}
         <AnimatedSection delay={150}>
           <div className={styles.subsection}>
-            <h3 className={styles.subsectionTitle}>{String(t("team.supervisor.title"))}</h3>
-            <div className={styles.supervisorContainer}>
-              <TeamCard
-                name={String(t("team.supervisor.khanh.name"))}
-                role={String(t("team.supervisor.khanh.role"))}
-                type="supervisor"
-              />
+            <h3 className={styles.subsectionTitle}>{String(t("team.founders.title"))}</h3>
+            <div className={styles.foundersGrid}>
+              {FOUNDER_KEYS.map((key) => (
+                <TeamCard
+                  key={key}
+                  name={String(t(`team.founders.${key}.name`))}
+                  role={String(t(`team.founders.${key}.role`))}
+                  type="founder"
+                />
+              ))}
             </div>
           </div>
         </AnimatedSection>
@@ -104,12 +99,12 @@ export default function TeamSection() {
               {(() => {
                 const awards = t("team.awards.list") as unknown as Array<{ title: string; description: string }>;
                 if (Array.isArray(awards)) {
-                  return awards.map((award, index: number) => (
+                  return awards.slice(0, MAX_AWARDS_DISPLAY).map((award, index: number) => (
                     <AwardCard
                       key={index}
                       title={award.title}
                       description={award.description}
-                      type={awardTypes[index]}
+                      type={AWARD_TYPES[index]}
                     />
                   ));
                 }

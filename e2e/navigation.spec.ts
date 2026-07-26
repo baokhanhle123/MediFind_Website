@@ -1,11 +1,11 @@
 import { test, expect } from '@playwright/test';
 
 /**
- * Navigation and scroll behavior tests
+ * Navigation, locale routing and scroll behavior tests
  */
 test.describe('Navigation', () => {
   test('should navigate between sections', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/en');
 
     // Click on problem section link
     await page.click('a[href="#problem"]');
@@ -18,15 +18,43 @@ test.describe('Navigation', () => {
     await expect(problemSection).toBeInViewport();
   });
 
-  test('language toggle should work', async ({ page }) => {
+  test('language toggle navigates to the other locale route', async ({ page }) => {
+    await page.goto('/en');
+    await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+
+    await page.getByRole('button', { name: /toggle language/i }).first().click();
+
+    await expect(page).toHaveURL(/\/vi$/);
+    await expect(page.locator('html')).toHaveAttribute('lang', 'vi');
+  });
+
+  test('language choice persists across a fresh visit to /', async ({ page }) => {
+    await page.goto('/en');
+    await page.getByRole('button', { name: /toggle language/i }).first().click();
+    await expect(page).toHaveURL(/\/vi$/);
+
+    // The toggle writes a cookie that middleware reads on the next bare-/ request
     await page.goto('/');
+    await expect(page).toHaveURL(/\/vi$/);
+  });
 
-    // Find and click language toggle
-    const languageToggle = page.getByRole('button', { name: /english|vietnamese|en|vi/i });
-    await languageToggle.click();
+  test('bare / redirects to a locale route', async ({ page }) => {
+    await page.context().clearCookies();
+    await page.goto('/');
+    await expect(page).toHaveURL(/\/(en|vi)$/);
+  });
 
-    // Check if language changed (HTML lang attribute)
-    const htmlLang = await page.locator('html').getAttribute('lang');
-    expect(['en', 'vi']).toContain(htmlLang);
+  test('vietnamese copy is present in the server-rendered HTML', async ({ request }) => {
+    // Fetched without executing JS: proves the /vi content is crawlable, which
+    // was the whole point of moving locales onto real routes.
+    const response = await request.get('/vi');
+    const html = await response.text();
+
+    expect(html).toContain('lang="vi"');
+    // Accented: the copy was originally authored without diacritics, so asserting
+    // the exact tone marks is what proves the restored strings actually shipped.
+    expect(html).toContain('Giải pháp');
+    expect(html).toContain('Trang chủ');
+    expect(html).toContain('Nền tảng thông minh giúp dược sĩ');
   });
 });

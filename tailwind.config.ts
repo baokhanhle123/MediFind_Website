@@ -26,7 +26,8 @@ export default {
         // Text colors
         foreground: {
           DEFAULT: "#1A1A2E",
-          secondary: "#7D7987",
+          // Keep in sync with --text-secondary in app/globals.css (4.80:1 on white)
+          secondary: "#75707E",
           light: "#FFFFFF",
         },
         // Gray scale
@@ -41,11 +42,12 @@ export default {
           700: "#495057",
           800: "#343A40",
           900: "#212529",
-          text: "#7D7987",
+          text: "#75707E",
         },
       },
       fontFamily: {
-        sans: ["var(--font-vietnam)", "Be Vietnam Pro", "system-ui", "sans-serif"],
+        // Must match the `variable` passed to next/font in app/[locale]/layout.tsx
+        sans: ["var(--font-be-vietnam-pro)", "system-ui", "sans-serif"],
       },
       fontSize: {
         // Custom font sizes for consistency

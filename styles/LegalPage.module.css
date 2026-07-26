@@ -1,0 +1,87 @@
+.page {
+  /* Clears the fixed navbar (80px) with breathing room. */
+  padding: 8rem 2rem 5rem;
+  background: var(--background);
+}
+
+.container {
+  /* ~68 characters per line. 46rem measured ~80ch, right at the edge of
+     comfortable for a page of dense legal prose. */
+  max-width: 40rem;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.title {
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.updated {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.section {
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-size: 1.375rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.intro {
+  color: var(--text-secondary);
+  margin-bottom: 1.25rem;
+}
+
+.list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.list li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+.list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--medifind-red);
+}
+
+.contact {
+  margin-top: 1.75rem;
+  color: var(--text-secondary);
+}
+
+.contact a {
+  color: var(--medifind-red);
+  font-weight: 500;
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 6.5rem 1.25rem 3rem;
+  }
+}

@@ -3,4 +3,11 @@
  */
 
 export { cn } from "./cn";
-export { asString, isStringArray } from "./i18n";
+export {
+  asString,
+  getDictionary,
+  getNestedValue,
+  isStringArray,
+  translate,
+  translateString,
+} from "./i18n";

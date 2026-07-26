@@ -4,34 +4,19 @@ import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import Button from "@/components/ui/Button";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { Logo } from "@/components/ui/icons";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, DEMO_REQUEST_HREF } from "@/constants";
 import styles from "@/styles/CTASection.module.css";
 
 export default function CTASection() {
   const { t } = useLanguage();
 
   return (
-    <section id="download" className={styles.section}>
+    <section id="contact" className={styles.section}>
       <div className={styles.container}>
         <AnimatedSection>
           <div className={styles.logo}>
-            <svg
-              width="80"
-              height="80"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M50 90C50 90 85 65 85 40C85 20 70 10 50 25C30 10 15 20 15 40C15 65 50 90 50 90Z"
-                fill="var(--medifind-red)"
-              />
-              <path
-                d="M50 35V55M40 45H60"
-                stroke="white"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Logo className="w-20 h-20" aria-hidden={true} />
             <span className={styles.logoText}>
               <span className={styles.medi}>Medi</span>
               <span className={styles.find}>Find</span>
@@ -52,45 +37,23 @@ export default function CTASection() {
           </div>
         </AnimatedSection>
 
+        {/* The Google Play badge and QR block that used to sit here pointed at
+            href="#" and a QR glyph that was not a scannable code — the app is
+            not published. A demo request is the honest equivalent. */}
         <AnimatedSection delay={300}>
-          <div className={styles.downloadArea}>
-            <div className={styles.qrCode}>
-              <div className={styles.qrPlaceholder}>
-                <svg width="120" height="120" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3 11h8V3H3v8zm2-6h4v4H5V5zm8-2v8h8V3h-8zm6 6h-4V5h4v4zM3 21h8v-8H3v8zm2-6h4v4H5v-4zm13 2h-2v4h2v-4zm-4-6h2v4h-2v-4zm2 6h4v2h-4v-2zm-2-2h2v2h-2v-2zm4 0h2v2h-2v-2zm0 4h2v2h-2v-2z" />
-                </svg>
-                <span>Scan to download</span>
-              </div>
-            </div>
-
-            <div className={styles.downloadButtons}>
-              <a href="#" className={styles.playButton}>
-                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
-                  <path d="M3.609 1.814L13.792 12 3.609 22.186c-.18-.18-.276-.466-.276-.791V2.605c0-.325.096-.611.276-.791zm10.839 9.547l2.481-2.481 3.909 2.26c.657.38.657.999 0 1.379l-3.909 2.26-2.481-2.481-.001-.937zm-1.358.639L3.953 21.137l9.137-9.137zm0-1L3.953 2.863 13.09 12z" />
-                </svg>
-                <div>
-                  <span className={styles.getIt}>GET IT ON</span>
-                  <span className={styles.googlePlay}>Google Play</span>
-                </div>
-              </a>
-
-              <Button href="#" size="lg">
-                {String(t("cta.try_now"))}
-              </Button>
-            </div>
+          <div className={styles.ctaArea}>
+            <Button href={DEMO_REQUEST_HREF} size="lg">
+              {String(t("cta.request_demo"))}
+            </Button>
+            <p className={styles.ctaNote}>{String(t("cta.status"))}</p>
           </div>
         </AnimatedSection>
 
         <AnimatedSection delay={400}>
           <div className={styles.contact}>
             <p>
-              <strong>WeChat:</strong> maryle_23
-            </p>
-            <p>
-              <strong>Email:</strong>{" "}
-              <a href="mailto:lethuthuy.contact@gmail.com">
-                lethuthuy.contact@gmail.com
-              </a>
+              <strong>{String(t("footer.contact.title"))}:</strong>{" "}
+              <a href={CONTACT_EMAIL_HREF}>{CONTACT_EMAIL}</a>
             </p>
           </div>
         </AnimatedSection>

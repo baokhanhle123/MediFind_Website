@@ -1,5 +1,10 @@
 .footer {
-  background: linear-gradient(135deg, var(--medifind-red) 0%, var(--medifind-red-light) 100%);
+  /* Descends into the dark brand red rather than the light one. The previous
+     light end (#E8495D) could not carry white body text at any opacity — pure
+     white on it measures 3.79:1, under the 4.5:1 AA minimum, so every line in
+     here was failing. Against #C41E3A, the lightest point of this gradient,
+     white clears at 5.84:1. */
+  background: linear-gradient(135deg, var(--medifind-red) 0%, var(--medifind-red-dark) 100%);
   color: white;
   padding-top: 4rem;
 }
@@ -9,7 +14,12 @@
   margin: 0 auto;
   padding: 0 2rem 3rem;
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1.5fr;
+  /* Three columns since the Google Play block was removed — brand, links,
+     contact. A stale fourth track left an empty column on the right.
+     The brand column is capped at 300px by .brand, so giving it 2fr just
+     stranded ~160px of empty space while squeezing the links column enough to
+     wrap the Vietnamese labels. */
+  grid-template-columns: 1.6fr 1.3fr 1.6fr;
   gap: 3rem;
 }
 
@@ -49,8 +59,7 @@
 }
 
 .links h4,
-.contact h4,
-.download h4 {
+.contact h4 {
   font-size: 1rem;
   font-weight: 600;
   margin-bottom: 1.25rem;
@@ -74,37 +83,6 @@
   color: white;
 }
 
-.playButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  background: rgba(0, 0, 0, 0.3);
-  padding: 0.75rem 1.25rem;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  transition: all var(--transition-normal);
-}
-
-.playButton:hover {
-  background: rgba(0, 0, 0, 0.5);
-  transform: translateY(-2px);
-}
-
-.getIt {
-  display: block;
-  font-size: 0.65rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  opacity: 0.9;
-}
-
-.googlePlay {
-  display: block;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
 .bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
   padding: 1.5rem 2rem;
@@ -113,8 +91,18 @@
 
 .bottom p {
   font-size: 0.875rem;
-  opacity: 0.8;
+  /* 0.8 measured 4.18:1 even on the darkened gradient — under AA for 14px text.
+     0.9 clears it at 4.94:1. */
+  opacity: 0.9;
   margin: 0;
+}
+
+.disclaimer {
+  max-width: 60ch;
+  margin: 0 auto 0.75rem !important;
+  /* Full white (5.84:1). This is a medication safety notice, so it gets the
+     highest legibility in the footer rather than being dimmed like boilerplate. */
+  opacity: 1 !important;
 }
 
 /* Responsive */
@@ -142,12 +130,7 @@
   }
 
   .links,
-  .contact,
-  .download {
+  .contact {
     text-align: center;
-  }
-
-  .playButton {
-    justify-content: center;
   }
 }

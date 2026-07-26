@@ -1,109 +1,71 @@
 "use client";
 
-import React, { createContext, useContext, useState, useEffect, ReactNode } from "react";
-import en from "@/locales/en.json";
-import vi from "@/locales/vi.json";
+import React, { createContext, useCallback, useContext, useMemo, ReactNode } from "react";
+import { usePathname, useRouter } from "next/navigation";
+import { LANGUAGE_COOKIE, LANGUAGE_COOKIE_MAX_AGE } from "@/constants/locales";
+import { translate } from "@/utils/i18n";
 import type {
   Language,
-  Translations,
   LanguageContextType,
   TranslateReturnType,
-  TranslationValue,
 } from "@/types/i18n";
-
-const translations: Record<Language, Translations> = { en, vi };
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
-/**
- * Retrieves a nested value from translation object using dot notation
- * @param obj - Translation object
- * @param path - Dot-separated path (e.g., "nav.home" or "solution.features.scan.title")
- * @returns The translation value (string or string array), or the path key if not found
- */
-function getNestedValue(
-  obj: Record<string, TranslationValue>,
-  path: string
-): TranslateReturnType {
-  const keys = path.split(".");
-  let result: TranslationValue = obj;
-
-  for (const key of keys) {
-    if (result && typeof result === "object" && !Array.isArray(result) && key in result) {
-      result = (result as Record<string, TranslationValue>)[key];
-    } else if (Array.isArray(result)) {
-      // If we hit an array, return it
-      return result;
-    } else {
-      // Return key if path not found (fallback)
-      return path;
-    }
-  }
-
-  // Ensure we return either string or string[]
-  if (typeof result === "string") {
-    return result;
-  } else if (Array.isArray(result)) {
-    return result;
-  } else {
-    // If we got an object, return the path as fallback
-    return path;
-  }
+interface LanguageProviderProps {
+  children: ReactNode;
+  /** Active locale, supplied by the `[locale]` route segment */
+  language: Language;
 }
 
-export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("en");
-  const [mounted, setMounted] = useState(false);
+/**
+ * Provides the active locale and translation function to client components
+ *
+ * @description
+ * The URL is the single source of truth for language — `language` comes from the
+ * `[locale]` route segment, so the server renders the correct copy on the first
+ * pass. There is deliberately no component state and no `mounted` gate here:
+ * both existed to reconcile a localStorage read against SSR, and both caused a
+ * flash of English before the stored preference applied.
+ *
+ * Switching language is a navigation (`/en` ↔ `/vi`), not a state update. The
+ * preference is mirrored into a cookie so `middleware.ts` can honour it when a
+ * visitor later lands on bare `/`.
+ */
+export function LanguageProvider({ children, language }: LanguageProviderProps) {
+  const router = useRouter();
+  const pathname = usePathname();
 
-  useEffect(() => {
-    setMounted(true);
-    const saved = localStorage.getItem("medifind-language") as Language;
-    if (saved && (saved === "en" || saved === "vi")) {
-      setLanguageState(saved);
-      document.documentElement.lang = saved; // Sync HTML lang attribute on mount
-    }
-  }, []);
+  const setLanguage = useCallback(
+    (lang: Language) => {
+      if (lang === language) return;
 
-  const setLanguage = (lang: Language) => {
-    setLanguageState(lang);
-    localStorage.setItem("medifind-language", lang);
-    document.documentElement.lang = lang;
-  };
+      document.cookie = `${LANGUAGE_COOKIE}=${lang}; path=/; max-age=${LANGUAGE_COOKIE_MAX_AGE}; SameSite=Lax`;
 
-  const toggleLanguage = () => {
-    const newLang = language === "en" ? "vi" : "en";
-    setLanguage(newLang);
-  };
-
-  const t = (key: string): TranslateReturnType => {
-    return getNestedValue(
-      translations[language] as unknown as Record<string, TranslationValue>,
-      key
-    );
-  };
-
-  // Prevent hydration mismatch
-  if (!mounted) {
-    return (
-      <LanguageContext.Provider
-        value={{
-          language: "en",
-          setLanguage: () => {},
-          toggleLanguage: () => {},
-          t: (key: string): TranslateReturnType =>
-            getNestedValue(en as unknown as Record<string, TranslationValue>, key),
-        }}
-      >
-        {children}
-      </LanguageContext.Provider>
-    );
-  }
-
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, toggleLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
+      // Swap the leading locale segment, preserving any deeper path and the hash
+      // so switching language keeps the reader where they were on the page.
+      const segments = pathname.split("/");
+      segments[1] = lang;
+      router.push(`${segments.join("/") || `/${lang}`}${window.location.hash}`);
+    },
+    [language, pathname, router]
   );
+
+  const toggleLanguage = useCallback(() => {
+    setLanguage(language === "en" ? "vi" : "en");
+  }, [language, setLanguage]);
+
+  const t = useCallback(
+    (key: string): TranslateReturnType => translate(language, key),
+    [language]
+  );
+
+  const value = useMemo(
+    () => ({ language, setLanguage, toggleLanguage, t }),
+    [language, setLanguage, toggleLanguage, t]
+  );
+
+  return <LanguageContext.Provider value={value}>{children}</LanguageContext.Provider>;
 }
 
 /**
@@ -117,8 +79,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
  *
  * @returns {LanguageContextType} Language context value containing:
  * - `language`: Current language ("en" | "vi")
- * - `setLanguage`: Function to set a specific language
- * - `toggleLanguage`: Function to toggle between languages
+ * - `setLanguage`: Navigates to the given locale and stores the preference
+ * - `toggleLanguage`: Navigates to the other locale
  * - `t`: Translation function that accepts dot-notation keys
  *
  * @example
@@ -128,7 +90,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
  *
  *   return (
  *     <div>
- *       <p>{t("nav.home")}</p>
+ *       <p>{String(t("nav.home"))}</p>
  *       <button onClick={toggleLanguage}>
  *         Switch to {language === "en" ? "Vietnamese" : "English"}
  *       </button>

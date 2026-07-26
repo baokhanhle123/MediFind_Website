@@ -65,18 +65,21 @@ export default function Button({
     "focus:outline-none focus:ring-2 focus:ring-offset-2",
     "disabled:opacity-50 disabled:cursor-not-allowed",
 
-    // Variant styles
+    // Variant styles.
+    // Ring colours are at full strength deliberately: WCAG 1.4.11 wants 3:1 for
+    // non-text indicators, and the previous ring-medifind-red/50 measured 2.43:1
+    // while ring-gray-400 measured 1.49:1 — effectively no focus indicator.
     {
       // Primary variant
-      "bg-medifind-red text-white hover:bg-medifind-red-dark focus:ring-medifind-red/50 shadow-sm hover:shadow-md":
+      "bg-medifind-red text-white hover:bg-medifind-red-dark focus:ring-medifind-red shadow-sm hover:shadow-md":
         variant === "primary",
 
       // Secondary variant
-      "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-400":
+      "bg-gray-100 text-gray-800 hover:bg-gray-200 focus:ring-gray-700":
         variant === "secondary",
 
       // Outline variant
-      "bg-white text-medifind-red border-2 border-medifind-red hover:bg-medifind-red/5 focus:ring-medifind-red/50":
+      "bg-white text-medifind-red border-2 border-medifind-red hover:bg-medifind-red/5 focus:ring-medifind-red":
         variant === "outline",
     },
 

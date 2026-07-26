@@ -11,10 +11,14 @@ import type { AwardType } from "@/types";
 export const MENTOR_KEYS = ["sonia", "thoai", "xuan"] as const;
 
 /**
- * Supervisor key for team section
- * Maps to translation key: team.supervisor.khanh
+ * Founding team keys, in display order
+ * These map to translation keys in the format: team.founders.{key}
+ *
+ * Roles are described functionally rather than by job title — MediFind is not
+ * yet incorporated, so C-level titles would assert a structure that does not
+ * exist.
  */
-export const SUPERVISOR_KEY = "khanh" as const;
+export const FOUNDER_KEYS = ["khanh", "thuy", "linh"] as const;
 
 /**
  * Partner organization keys
@@ -36,9 +40,14 @@ export const AWARD_TYPES: readonly AwardType[] = [
   "bronze",
   "special",
   "special",
+  "bronze",
+  "gold",
 ] as const;
 
 /**
  * Maximum number of awards to display
+ *
+ * Keep in step with AWARD_TYPES and team.awards.list in the locale files — an
+ * award past this index renders with no medal type.
  */
-export const MAX_AWARDS_DISPLAY = 5;
+export const MAX_AWARDS_DISPLAY = AWARD_TYPES.length;

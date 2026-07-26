@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import { LanguageToggle, Button } from "@/components/ui";
 import { Logo } from "@/components/ui/icons";
@@ -12,6 +12,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   // Mount detection - prevents hydration mismatch
   useEffect(() => {
@@ -31,6 +33,56 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [mounted]);
+
+  // Focus management for the mobile menu. Opening it renders a panel over the
+  // page, so focus has to follow: without this, a keyboard user activates the
+  // toggle and their focus stays behind the overlay with nothing to operate.
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const panel = mobileMenuRef.current;
+    if (!panel) return;
+
+    const focusable = () =>
+      Array.from(
+        panel.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )
+      ).filter((el) => el.offsetParent !== null);
+
+    focusable()[0]?.focus();
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsMobileMenuOpen(false);
+        // Return focus to the control that opened the panel, not to <body>.
+        toggleRef.current?.focus();
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      // Trap: the panel visually covers the page, so tabbing to what is behind
+      // it would move focus somewhere the user cannot see.
+      const items = focusable();
+      if (items.length === 0) return;
+
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isMobileMenuOpen]);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
@@ -66,7 +118,7 @@ export default function Navbar() {
           </span>
         </a>
 
-        <div className={`${styles.navLinks} ${isMobileMenuOpen ? styles.mobileOpen : ""}`}>
+        <div className={styles.navLinks}>
           {NAV_LINKS.map((link) => (
             <a
               key={link.key}
@@ -81,12 +133,13 @@ export default function Navbar() {
 
         <div className={styles.actions}>
           <LanguageToggle />
-          <Button href="#download" size="sm">
-            {String(t("nav.download"))}
+          <Button href="#contact" size="sm">
+            {String(t("nav.contact"))}
           </Button>
         </div>
 
         <button
+          ref={toggleRef}
           className={`${styles.mobileToggle} ${isMobileMenuOpen ? styles.open : ""}`}
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
@@ -100,22 +153,26 @@ export default function Navbar() {
       </div>
 
       {isMobileMenuOpen && (
-        <div id="mobile-navigation" className={styles.mobileMenu} role="menu">
+        // role="menu"/"menuitem" was wrong here: those describe an application
+        // menu and promise arrow-key navigation this never had. These are plain
+        // links, already inside the labelled <nav> landmark above, so the
+        // disclosure pattern on the toggle (aria-expanded + aria-controls) is
+        // the whole contract.
+        <div id="mobile-navigation" ref={mobileMenuRef} className={styles.mobileMenu}>
           {NAV_LINKS.map((link) => (
             <a
               key={link.key}
               href={link.href}
               className={styles.mobileLink}
               onClick={(e) => handleNavClick(e, link.href)}
-              role="menuitem"
             >
               {String(t(`nav.${link.key}`))}
             </a>
           ))}
           <div className={styles.mobileActions}>
             <LanguageToggle />
-            <Button href="#download" fullWidth>
-              {String(t("nav.download"))}
+            <Button href="#contact" fullWidth>
+              {String(t("nav.contact"))}
             </Button>
           </div>
         </div>

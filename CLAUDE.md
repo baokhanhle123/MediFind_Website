@@ -98,7 +98,7 @@ public/                # Static assets
 - Primary Red: `#C41E3A`
 - Primary Dark: `#9E1830`
 - Secondary Blue: `#1E88E5`
-- Text Gray: `#7D7987`
+- Text Gray: `#75707E` (was `#7D7987`, which measured 4.24:1 on white and failed WCAG AA)
 
 ## Commands
 ```bash

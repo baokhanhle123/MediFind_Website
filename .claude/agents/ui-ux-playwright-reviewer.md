@@ -21,7 +21,7 @@ Your Review Methodology:
 **Visual Design Analysis:**
 - Layout consistency and grid alignment
 - Typography hierarchy, readability, and font rendering
-- Color palette adherence to brand guidelines (Primary Red: #C41E3A, Primary Dark: #9E1830, Secondary Blue: #1E88E5, Text Gray: #7D7987)
+- Color palette adherence to brand guidelines (Primary Red: #C41E3A, Primary Dark: #9E1830, Secondary Blue: #1E88E5, Text Gray: #75707E)
 - Spacing and whitespace utilization
 - Visual balance and composition
 - Responsive behavior across breakpoints

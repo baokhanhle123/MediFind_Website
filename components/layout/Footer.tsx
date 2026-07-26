@@ -1,35 +1,22 @@
 "use client";
 
 import React from "react";
+import Link from "next/link";
 import { useLanguage } from "@/context/LanguageContext";
+import { Logo } from "@/components/ui/icons";
+import { CONTACT_EMAIL, CONTACT_EMAIL_HREF, FOUNDED_YEAR } from "@/constants";
 import styles from "@/styles/Footer.module.css";
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={styles.footer}>
+    <footer className={`${styles.footer} on-brand`}>
       <div className={styles.container}>
         <div className={styles.brand}>
           <div className={styles.logo}>
-            <svg
-              width="40"
-              height="40"
-              viewBox="0 0 100 100"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M50 90C50 90 85 65 85 40C85 20 70 10 50 25C30 10 15 20 15 40C15 65 50 90 50 90Z"
-                fill="white"
-              />
-              <path
-                d="M50 35V55M40 45H60"
-                stroke="var(--medifind-red)"
-                strokeWidth="6"
-                strokeLinecap="round"
-              />
-            </svg>
+            <Logo variant="white" className="w-10 h-10" aria-hidden={true} />
             <span className={styles.logoText}>
               <span className={styles.medi}>Medi</span>
               <span className={styles.find}>Find</span>
@@ -44,37 +31,30 @@ export default function Footer() {
           <a href="#hero">{String(t("footer.links.home"))}</a>
           <a href="#problem">{String(t("footer.links.about"))}</a>
           <a href="#solution">{String(t("footer.links.features"))}</a>
-          <a href="#download">{String(t("footer.links.download"))}</a>
+          <a href="#contact">{String(t("footer.links.contact"))}</a>
+          <Link href={`/${language}/legal`}>{String(t("footer.links.legal"))}</Link>
         </div>
 
         <div className={styles.contact}>
           <h4>{String(t("footer.contact.title"))}</h4>
-          <p>{String(t("footer.contact.wechat"))}</p>
-          <a href="mailto:lethuthuy.contact@gmail.com">
-            {String(t("footer.contact.email"))}
-          </a>
-        </div>
-
-        <div className={styles.download}>
-          <h4>{String(t("nav.download"))}</h4>
-          <a
-            href="#download"
-            className={styles.playButton}
-            aria-label="Get it on Google Play"
-          >
-            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
-              <path d="M3.609 1.814L13.792 12 3.609 22.186c-.18-.18-.276-.466-.276-.791V2.605c0-.325.096-.611.276-.791zm10.839 9.547l2.481-2.481 3.909 2.26c.657.38.657.999 0 1.379l-3.909 2.26-2.481-2.481-.001-.937zm-1.358.639L3.953 21.137l9.137-9.137zm0-1L3.953 2.863 13.09 12z" />
-            </svg>
-            <div>
-              <span className={styles.getIt}>GET IT ON</span>
-              <span className={styles.googlePlay}>Google Play</span>
-            </div>
-          </a>
+          <a href={CONTACT_EMAIL_HREF}>{CONTACT_EMAIL}</a>
         </div>
       </div>
 
       <div className={styles.bottom}>
-        <p>{String(t("footer.copyright"))}</p>
+        {/* Condensed disclaimer, deliberately on every page rather than only on
+            /legal — this is a page about medication guidance. */}
+        <p className={styles.disclaimer}>{String(t("legal.disclaimer_short"))}</p>
+        {/* Year is rendered here rather than baked into the locale string, which
+            had drifted to a hardcoded "2024". */}
+        {/* suppressHydrationWarning: pages are statically generated, so the
+            server bakes in the build year while the client reads the real one.
+            They differ only across a New Year boundary, and the client value is
+            the correct one to keep. */}
+        <p suppressHydrationWarning>
+          © {FOUNDED_YEAR === currentYear ? FOUNDED_YEAR : `${FOUNDED_YEAR}–${currentYear}`}{" "}
+          {String(t("footer.copyright"))}
+        </p>
       </div>
     </footer>
   );

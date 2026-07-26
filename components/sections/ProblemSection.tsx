@@ -5,35 +5,20 @@ import { useLanguage } from "@/context/LanguageContext";
 import SectionTitle from "@/components/ui/SectionTitle";
 import StatCard from "@/components/ui/StatCard";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import { PROBLEM_STATS_KEYS, PROBLEM_ISSUES_KEYS } from "@/constants";
 import styles from "@/styles/ProblemSection.module.css";
 
 export default function ProblemSection() {
   const { t } = useLanguage();
 
-  const stats = [
-    {
-      value: String(t("problem.stats.arbitrary_use")),
-      description: String(t("problem.stats.arbitrary_use_desc")),
-    },
-    {
-      value: String(t("problem.stats.pharmacies")),
-      description: String(t("problem.stats.pharmacies_desc")),
-    },
-    {
-      value: String(t("problem.stats.worldwide")),
-      description: String(t("problem.stats.worldwide_desc")),
-    },
-    {
-      value: String(t("problem.stats.western_pacific")),
-      description: String(t("problem.stats.western_pacific_desc")),
-    },
-  ];
+  const stats = PROBLEM_STATS_KEYS.map((key) => ({
+    value: String(t(`problem.stats.${key}`)),
+    description: String(t(`problem.stats.${key}_desc`)),
+  }));
 
-  const issues = [
-    String(t("problem.issues.misinformation")),
-    String(t("problem.issues.continuity")),
-    String(t("problem.issues.engagement")),
-  ];
+  const issues = PROBLEM_ISSUES_KEYS.map((key) =>
+    String(t(`problem.issues.${key}`)),
+  );
 
   return (
     <section id="problem" className={`${styles.section} section-padding`}>
@@ -69,7 +54,7 @@ export default function ProblemSection() {
 
         <AnimatedSection delay={300}>
           <div className={styles.issuesSection}>
-            <h3 className={styles.issuesTitle}>{String(t("problem.title"))}</h3>
+            <h3 className={styles.issuesTitle}>{String(t("problem.issues_title"))}</h3>
             <ul className={styles.issuesList}>
               {issues.map((issue, index) => (
                 <li key={index}>

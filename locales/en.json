@@ -1,19 +1,58 @@
 {
+  "meta": {
+    "title": "MediFind+ | Use Wisely, Take Precisely",
+    "description": "MediFind is an AI-powered platform that helps pharmacists, physicians, and families make safer, smarter medication decisions — scanning prescriptions and medicine packaging and turning them into clear, reliable guidance.",
+    "og_title": "MediFind+ | Digital Health Platform",
+    "og_description": "A platform that helps healthcare professionals and families make safer, smarter medication decisions through AI-powered prescription and package scanning."
+  },
+  "a11y": {
+    "skip_to_content": "Skip to main content"
+  },
   "nav": {
     "home": "Home",
     "problem": "Problem",
     "solution": "Solution",
     "technology": "Technology",
     "team": "Team",
-    "download": "Download"
+    "contact": "Contact"
   },
   "hero": {
     "tagline": "Use wisely, take precisely",
     "title": "MediFind+",
-    "subtitle": "A platform helps people make smarter, safer healthcare decisions",
+    "subtitle": "An intelligent platform that helps pharmacists, physicians, and families make safer, smarter medication decisions",
     "badge": "Digital Health",
-    "cta_download": "Download App",
-    "cta_learn": "Learn More"
+    "cta_learn": "Learn More",
+    "mockup": {
+      "reminder": "Medication reminder",
+      "reminder_action": "Set up now",
+      "scan": "Scan a prescription",
+      "chatbot": "MediGPT",
+      "chatbot_desc": "Chatbot powered by ChatGPT"
+    },
+    "cta_demo": "Request a Demo"
+  },
+  "credibility": {
+    "aria_label": "Project credentials",
+    "awards": {
+      "value": "7",
+      "label": "Competition awards",
+      "detail": "National & international"
+    },
+    "research": {
+      "value": "ACOMPA 2023",
+      "label": "Published research",
+      "detail": "Peer-reviewed, IEEE"
+    },
+    "data": {
+      "value": "190k+",
+      "label": "Drug records",
+      "detail": "DrugBank + NLM UMLS"
+    },
+    "clinics": {
+      "value": "5",
+      "label": "Partner clinics",
+      "detail": "Accepting MediFind"
+    }
   },
   "problem": {
     "title": "Problem",
@@ -33,8 +72,10 @@
       "description": "According to WHO, antibiotic resistance is increasing and is just as dangerous as the COVID-19 pandemic.",
       "deaths": "Every year, about 700,000 people die globally because of antibiotic resistance. This number could increase to 10 million people by 2050 ~ such as coughing or just a cut on the skin can cause death."
     },
+    "issues_title": "Key Challenges",
     "issues": {
       "misinformation": "Misinformation about medicines",
+      "workload": "Pharmacists recall detail on hundreds of medicines a day, from memory",
       "continuity": "Poor continuity of care",
       "engagement": "Low engagement in preventive health"
     }
@@ -42,61 +83,56 @@
   "about": {
     "title": "About Us",
     "founded": "MediFind was founded by a group of students from Ho Chi Minh City University of Technology and University of Economics Ho Chi Minh city (UEH)",
-    "description": "MediFind is an app that uses artificial intelligence technologies to figure out which medicines are in a picture or written text of a prescription. It then gives tips on how to safely take these medicines and advice that fits just right for each person's health needs.",
-    "features": "The app also has extra helpful features like reminders to take your medicine, a chat feature to ask questions, and a map to find nearby pharmacies, all to make using the app easier and better for everyone.",
+    "description": "MediFind uses artificial intelligence to identify the medicines in a photo of a prescription or a medicine package, then explains how to take them safely. Pharmacists and physicians use it to verify what they are dispensing; patients and families use it to understand what they have been given.",
+    "features": "The app adds reminders so no dose is missed, a chat assistant for follow-up questions, and a map of nearby pharmacies — so the same information is available at the counter and at home.",
     "first_in_vietnam": "MediFind is the first application in Vietnam that allows users to recognize prescriptions through images and digital letters."
   },
   "solution": {
     "title": "Solution",
+    "stakeholders_title": "Built for everyone in the medication chain",
     "stakeholders": {
-      "government": {
-        "title": "Government",
+      "pharmacists": {
+        "title": "Pharmacists & Physicians",
         "items": [
-          "Amplify preventive-health campaign",
-          "Support national digital-health objectives",
-          "Reach citizens at scale through official channels"
+          "Verify drug identity, dosage, and indications by scanning a prescription or package",
+          "Automatic checks against drug interactions and dosage limits",
+          "Review medication history to catch overdoses and unsafe combinations",
+          "Less time spent looking things up, less cognitive load during consultations"
         ]
       },
-      "hospitals": {
-        "title": "Hospitals",
+      "pharmacy_staff": {
+        "title": "Pharmacy Staff",
         "items": [
-          "Strengthen continuity of care",
-          "Consolidate prescriptions and medication history in one place",
-          "Create new revenue streams for physical healthcare points"
+          "Fast, reliable verification at the counter while dispensing",
+          "Look up unfamiliar or imported products from the packaging alone",
+          "Help newer pharmacists build confidence across the full inventory",
+          "Answer customer questions with consistent, sourced information"
         ]
       },
-      "clinics": {
-        "title": "Clinics & Pharmacies",
+      "education": {
+        "title": "Medical Education",
         "items": [
-          "Serve as a bridge connecting users to trusted providers",
-          "Enable fast medicine ordering via partners (e.g., Grab)",
-          "Create new revenue streams for physical healthcare points"
+          "A beginner-friendly reference for pharmacy and medical students",
+          "Less time memorising drug detail, more time on consultation skills",
+          "Make pharmaceutical training more accessible and more consistent",
+          "Support practical coursework with standardised drug data"
         ]
       },
-      "pharma": {
-        "title": "Pharmaceutical Manufacturers",
+      "patients": {
+        "title": "Patients & Families",
         "items": [
-          "QR codes on blister packs link to verified drug information",
-          "\"For more information, ask MediFind\" becomes a universal guidance point",
-          "Turn every medicine box into a trusted education channel",
-          "Access valuable anonymized analytics"
-        ]
-      },
-      "users": {
-        "title": "Users",
-        "items": [
-          "Personalized Health Insights - BMI tracking & lifestyle alerts",
-          "Environment Indicators - Real-time air-quality information",
-          "Pharmacy Recommendations - Trusted nearby pharmacies",
-          "Digital Health Notebook - Track medication history",
-          "Gamification & Rewards - Daily check-ins earn coins"
+          "Plain-language instructions for every medicine you are prescribed",
+          "Dosage schedules and reminders so no dose is missed",
+          "Side effects explained without the medical jargon",
+          "Safety alerts for unsafe combinations at home",
+          "Trusted nearby pharmacies and a digital record of what you have taken"
         ]
       }
     },
     "features": {
       "health_track": {
         "title": "Health Track",
-        "description": "Monitor your pulse, track drug overdose potential, symptoms, and side effects"
+        "description": "Monitor your pulse, track symptoms and side effects, and flag potential overdoses and unsafe combinations"
       },
       "reminder": {
         "title": "Auto Reminder",
@@ -108,7 +144,7 @@
       },
       "scan": {
         "title": "Drug Identification",
-        "description": "Scan prescriptions using OCR-NLP technology for instant medication details"
+        "description": "Scan a prescription or a medicine package using OCR-NLP technology for instant medication details"
       },
       "chatbot": {
         "title": "MediGPT Chatbot",
@@ -124,12 +160,15 @@
     "title": "Key Technology",
     "modern": {
       "title": "Modern Technology",
-      "items": ["OCR, NLP and LLM technique", "Big Data Analytics"]
+      "items": [
+        "OCR, NLP and LLM technique",
+        "Big Data Analytics"
+      ]
     },
     "data": {
       "title": "Datasets from",
-      "drugbank": "Drugbank (~40k records)",
-      "umls": "UMLS - Unified Medical Language System (~150k records)"
+      "drugbank": "DrugBank (~40k records) — the Canadian drug database funded by the Canadian Institutes of Health Research",
+      "umls": "UMLS - Unified Medical Language System (~150k records) — from the US National Library of Medicine"
     },
     "solving": {
       "title": "Solving an alarming problem",
@@ -142,7 +181,9 @@
     "research": {
       "title": "Recreating models from scratch",
       "description": "Utilize various advanced technologies to create our own model",
-      "paper": "Public paper in 17th Advanced Computing and Analytics 2023"
+      "paper": "Published at ACOMPA 2023 — International Conference on Advanced Computing and Analytics, IEEE",
+      "paper_title": "MediFind — A Medicine Detection Framework for Vietnamese Medical Prescription",
+      "paper_cta": "Read the paper on IEEE Xplore"
     },
     "architecture": {
       "description": "MediFind's central architecture is based on two stages: Optical Character Recognition (OCR) and Natural Language Processing (NLP). By combining VietOCR and spaCy, and after a careful fine-tuning process, we have achieved a high degree of accuracy in identifying the names of medicines and antibiotics."
@@ -161,15 +202,23 @@
         "role": "Technical Advisor"
       },
       "xuan": {
-        "name": "MSc Ha T Thanh Xuan",
+        "name": "MSc Ha Thi Thanh Xuan",
         "role": "Medical Advisor"
       }
     },
-    "supervisor": {
-      "title": "Supervisor",
+    "founders": {
+      "title": "Founding Team",
       "khanh": {
-        "name": "Khanh Le",
-        "role": "AI Developer"
+        "name": "Khanh Le Bao",
+        "role": "Technology & AI"
+      },
+      "thuy": {
+        "name": "Thuy Thu Le",
+        "role": "Operations & Finance"
+      },
+      "linh": {
+        "name": "Linh My Pham",
+        "role": "Product"
       }
     },
     "partners": {
@@ -200,6 +249,14 @@
         {
           "title": "Innovation Prize",
           "description": "VietFuture - Vietnam Information Technology Services and Software Association (VINASA)"
+        },
+        {
+          "title": "3rd Prize",
+          "description": "China-ASEAN Innovation and Entrepreneurship Competition"
+        },
+        {
+          "title": "International Innovator Award 2024",
+          "description": "Leipzig University, Germany"
         }
       ]
     },
@@ -284,28 +341,56 @@
     "title": "A simple scan",
     "subtitle": "of your prescription",
     "result": "to make your life healthier",
-    "download": "Get it on Google Play",
-    "try_now": "Try it now"
+    "request_demo": "Request a demo",
+    "status": "MediFind is in a closed beta with over 100 testers and is not yet on the app stores. Get in touch and we will walk you through it."
   },
   "footer": {
     "tagline": "Use wisely, take precisely",
     "contact": {
-      "title": "Contact",
-      "wechat": "WeChat: maryle_23",
-      "email": "lethuthuy.contact@gmail.com"
+      "title": "Contact"
     },
     "links": {
       "title": "Links",
       "home": "Home",
       "about": "About",
       "features": "Features",
-      "download": "Download"
+      "contact": "Contact",
+      "legal": "Legal"
     },
-    "copyright": "2024 MediFind. All rights reserved."
+    "copyright": "MediFind. All rights reserved."
   },
   "language": {
     "en": "English",
     "vi": "Vietnamese",
     "toggle": "Switch language"
+  },
+  "legal": {
+    "title": "Disclaimer & Privacy",
+    "updated": "Last updated: July 2026",
+    "disclaimer_short": "MediFind provides medicine information, not medical advice. Always consult a physician or pharmacist before changing how you take a prescription.",
+    "disclaimer": {
+      "title": "Medical Disclaimer",
+      "items": [
+        "MediFind provides general information about medicines. It is not medical advice, diagnosis, or treatment, and it does not create a doctor–patient relationship.",
+        "MediFind does not replace a physician, pharmacist, or any other qualified healthcare professional. Always consult one before starting, stopping, or changing a medication.",
+        "Prescription recognition relies on optical character recognition and language models. These can misread handwriting, misidentify a drug name, or return an incorrect dosage. Always verify against the physical prescription and the packaging.",
+        "Never disregard professional medical advice or delay seeking it because of something you read here or in the app.",
+        "In an emergency, contact your local emergency services immediately. Do not rely on MediFind.",
+        "The competition results, partner clinics, and research described on this site relate to the project's development. They are not a clinical validation of the product and are not a regulatory approval of any kind."
+      ]
+    },
+    "privacy": {
+      "title": "Privacy",
+      "intro": "This website is a portfolio site. It is deliberately minimal about data.",
+      "items": [
+        "No analytics. No tracking pixels, no third-party scripts, no advertising networks.",
+        "No accounts, no forms, and no personal data is collected or transmitted by this website.",
+        "One cookie is set: medifind-language. It stores your language preference (en or vi) so the site opens in the same language next time. It expires after one year and contains nothing else. Clearing it simply resets language detection.",
+        "Fonts are self-hosted and served from this domain, so no request is made to a third-party font provider.",
+        "This site is hosted by a third-party provider, which may keep standard server access logs. Those are outside our control and are not used by us.",
+        "The MediFind mobile application is in a closed beta and is not publicly available. It has its own separate privacy policy covering the data it processes, provided to testers directly. This notice covers this website only."
+      ],
+      "contact_label": "Questions about this notice:"
+    }
   }
 }

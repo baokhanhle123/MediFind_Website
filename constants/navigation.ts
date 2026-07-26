@@ -25,7 +25,9 @@ export const SECTION_IDS = {
   SOLUTION: "solution",
   TECHNOLOGY: "technology",
   TEAM: "team",
-  CTA: "cta",
+  // Was "cta", which matched no element in the DOM. The section renders
+  // id="contact".
+  CONTACT: "contact",
 } as const;
 
 /**

@@ -30,19 +30,21 @@ export const SOLUTION_FEATURES = [
  * Stakeholder types for the solution section tabs
  */
 export const STAKEHOLDER_KEYS = [
-  "government",
-  "hospitals",
-  "clinics",
-  "pharma",
-  "users",
+  "pharmacists",
+  "pharmacy_staff",
+  "education",
+  "patients",
 ] as const;
 
 export type StakeholderKey = (typeof STAKEHOLDER_KEYS)[number];
 
 /**
  * Default active stakeholder tab
+ *
+ * Healthcare professionals are the primary audience, so their panel is the one
+ * shown before any interaction.
  */
-export const DEFAULT_STAKEHOLDER_TAB: StakeholderKey = "users";
+export const DEFAULT_STAKEHOLDER_TAB: StakeholderKey = "pharmacists";
 
 /**
  * Problem section statistics configuration
@@ -61,6 +63,7 @@ export const PROBLEM_STATS_KEYS = [
  */
 export const PROBLEM_ISSUES_KEYS = [
   "misinformation",
+  "workload",
   "continuity",
   "engagement",
 ] as const;

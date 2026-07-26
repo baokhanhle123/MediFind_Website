@@ -47,13 +47,13 @@
   font-weight: 500;
 }
 
-/* Supervisor variant */
-.supervisor .imageContainer {
+/* Founder variant */
+.founder .imageContainer {
   border-color: var(--medifind-red);
   box-shadow: 0 4px 12px rgba(196, 30, 58, 0.2);
 }
 
-.supervisor .role {
+.founder .role {
   background: var(--medifind-red);
   color: white;
   padding: 0.25rem 0.75rem;

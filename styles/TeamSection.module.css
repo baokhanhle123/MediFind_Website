@@ -27,10 +27,11 @@
   gap: 2rem;
 }
 
-/* Supervisor */
-.supervisorContainer {
-  display: flex;
-  justify-content: center;
+/* Founding team */
+.foundersGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 }
 
 /* Partners */
@@ -133,7 +134,8 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .mentorsGrid {
+  .mentorsGrid,
+  .foundersGrid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -147,7 +149,8 @@
 }
 
 @media (max-width: 600px) {
-  .mentorsGrid {
+  .mentorsGrid,
+  .foundersGrid {
     grid-template-columns: 1fr;
   }
 
