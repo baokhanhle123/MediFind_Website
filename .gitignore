@@ -50,3 +50,10 @@ next-env.d.ts
 *.tmp.js
 *.tmp.ts
 *.tmp.mjs
+
+# source decks
+# These carry a real patient's prescription — insurance number, diagnosis
+# codes, medication list and the prescriber's signature — plus the funding
+# application's shareholding and financial tables. Keep them out of a public
+# repository.
+*.pdf
