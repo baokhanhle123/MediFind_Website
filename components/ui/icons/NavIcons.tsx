@@ -79,3 +79,51 @@ export function ChevronDownIcon({ className, ...props }: IconProps) {
     </svg>
   );
 }
+
+/**
+ * Chevron left icon
+ * Used to step a horizontal filmstrip backwards
+ */
+export function ChevronLeftIcon({ className, ...props }: IconProps) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      {...props}
+    >
+      <title>Previous</title>
+      <polyline points="15 18 9 12 15 6" />
+    </svg>
+  );
+}
+
+/**
+ * Chevron right icon
+ * Used to step a horizontal filmstrip forwards
+ */
+export function ChevronRightIcon({ className, ...props }: IconProps) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+      {...props}
+    >
+      <title>Next</title>
+      <polyline points="9 18 15 12 9 6" />
+    </svg>
+  );
+}

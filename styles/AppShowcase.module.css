@@ -9,23 +9,197 @@
 }
 
 /*
- * Scroll container. `overflow-x: auto` keeps the overflow inside this element
- * so the page body never scrolls sideways on mobile.
+ * Inner panel, the same idiom as `.stakeholders` and `.clinicsSection`. The
+ * gradient deliberately runs tinted-to-white rather than the other way round:
+ * the tint belongs at the top behind the dark bezels, and the captions need the
+ * light end.
+ *
+ * Do not darken the lower stop past #F7F8FB. `--text-secondary` measures 4.80:1
+ * on white and 4.32:1 on #F1F3F7 — below that stop the descriptions fail WCAG AA
+ * and e2e/accessibility.spec.ts starts failing on every route.
+ *
+ * `--mf-gutter` is the panel's own padding and doubles as the strip's inline
+ * padding and its fade width, which is what lets the fades be permanent.
+ */
+.stage {
+  --mf-gutter: 2rem;
+
+  position: relative;
+  padding: var(--mf-gutter);
+  border-radius: 24px;
+  background: linear-gradient(180deg, #ECEFF4 0%, #F6F8FA 45%, #FFFFFF 100%);
+  border: 1px solid rgba(26, 26, 46, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7);
+}
+
+/* Unreachable while five cards overflow at every supported width. Kept so a
+   future edit that drops to three screens degrades to a plain row rather than
+   leaving two permanently dead controls on screen. */
+.stageStatic .controls,
+.stageStatic .progress {
+  display: none;
+}
+
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Held at 44px on every breakpoint. Nothing crowds these, so the earlier
+   shrink to 40px on phones bought nothing and gave up the platform touch-target
+   size on the one form factor where it matters most. */
+.control {
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(26, 26, 46, 0.1);
+  border-radius: 50%;
+  background: #ffffff;
+  color: var(--medifind-red);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/*
+ * `aria-disabled` rather than the `disabled` attribute: a native button that
+ * disables itself while focused hands focus to <body>, so pressing "next" at
+ * the last card would send the next Tab back to the top of the document.
+ */
+.control[aria-disabled="true"] {
+  color: var(--text-secondary);
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+@media (hover: hover) {
+  .control:not([aria-disabled="true"]):hover {
+    background: var(--medifind-red);
+    border-color: var(--medifind-red);
+    color: var(--text-light);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/*
+ * Bleeds the strip out to the panel's inner edge so the cards are clipped where
+ * the fade ends, not somewhere arbitrary inside the padding.
+ */
+.stripWrap {
+  position: relative;
+  margin-inline: calc(var(--mf-gutter) * -1);
+}
+
+/*
+ * The strip is masked, and `mask-clip` defaults to `border-box`, so anything
+ * painted outside it is erased — including the global `:focus-visible` outline,
+ * which sits 2px out. The ring goes on this unmasked wrapper instead, inset so
+ * it stays inside the panel.
+ */
+.stripWrap:has(.strip:focus-visible) {
+  outline: 3px solid var(--medifind-red);
+  outline-offset: -3px;
+  border-radius: 16px;
+}
+
+/*
+ * Scroll container. `overflow-x: auto` keeps the overflow inside this element so
+ * the page body never scrolls sideways on mobile. The native scrollbar is hidden
+ * — the arrows and the progress bar are its replacement.
  */
 .strip {
+  --mf-card: 220px;
+  --mf-bezel: 10px;
+  --mf-screen-radius: 22px;
+
   list-style: none;
   margin: 0;
-  padding: 0 0 1rem;
+  /* Inline: matches the fade width, so a card at rest never sits under the fade
+     and the mask can stay on permanently.
+     Block: contains the card shadows and the hover lift. The mask clips to this
+     element's border box, so anything spilling past the padding is erased. */
+  padding: 0.75rem var(--mf-gutter) 2rem;
+  scroll-padding-inline: var(--mf-gutter);
   display: flex;
   gap: 2rem;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
+  /* Programmatic scrolls resolve `behavior: "auto"` against this, which is why
+     the component never names a behaviour — see the reduced-motion block. */
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--mf-gutter),
+    #000 calc(100% - var(--mf-gutter)),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    #000 var(--mf-gutter),
+    #000 calc(100% - var(--mf-gutter)),
+    transparent 100%
+  );
+}
+
+.strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Fallback for engines without `:has()`. A negative offset draws the ring inside
+   the border box, where the mask cannot remove it — only its two ends fade. */
+.strip:focus-visible {
+  outline: 3px solid var(--medifind-red);
+  outline-offset: -3px;
 }
 
 .item {
   flex: 0 0 auto;
-  scroll-snap-align: center;
+  /* `start` rather than `center`: with `mandatory` snapping, scrollLeft 0 is not
+     a snap position under `center`, so the strip would not reliably rest with
+     the first card flush left. */
+  scroll-snap-align: start;
+  /*
+   * Staggered entrance driven by the single AnimatedSection wrapper rather than
+   * one per card: AnimatedSection renders a <div>, which would land between the
+   * <li> and the <figure>, add five more IntersectionObservers to animate one
+   * row, and fight `scroll-snap-align` with its own transform.
+   */
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+:global(.animate-on-scroll.visible) .item {
+  opacity: 1;
+  transform: none;
+}
+
+.item:nth-child(2) {
+  transition-delay: 70ms;
+}
+
+.item:nth-child(3) {
+  transition-delay: 140ms;
+}
+
+.item:nth-child(4) {
+  transition-delay: 210ms;
+}
+
+.item:nth-child(5) {
+  transition-delay: 280ms;
 }
 
 .figure {
@@ -33,59 +207,279 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  width: 220px;
+  gap: 1.25rem;
+  width: var(--mf-card);
 }
 
+/*
+ * Device frame. The outer radius is derived rather than guessed — the previous
+ * 32px outer / 8px padding / 26px inner did not close, so the bezel read as
+ * uneven thickness around the corners.
+ */
 .phone {
-  width: 220px;
-  height: 440px;
-  background: #1a1a1a;
-  border-radius: 32px;
-  padding: 8px;
-  box-shadow: var(--shadow-lg);
+  position: relative;
+  width: 100%;
+  padding: var(--mf-bezel);
+  border-radius: calc(var(--mf-screen-radius) + var(--mf-bezel));
+  background: linear-gradient(155deg, #43434e 0%, #22222b 38%, #131319 100%);
+  box-shadow:
+    /* top-edge highlight, then a hairline all round */ inset 0 1px 0
+      rgba(255, 255, 255, 0.22),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.08),
+    /* contact, lift, ambient */ 0 1px 2px rgba(19, 19, 25, 0.24),
+    0 8px 16px -6px rgba(19, 19, 25, 0.3),
+    0 20px 32px -16px rgba(19, 19, 25, 0.32);
+  transition: transform var(--transition-normal),
+    box-shadow var(--transition-normal);
+}
+
+/* Speaker slit. Sits in the bezel above the screen rather than over it — the
+   screenshots already contain their own status bar. */
+.phone::before {
+  content: "";
+  position: absolute;
+  top: calc((var(--mf-bezel) - 3px) / 2);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 34px;
+  height: 3px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+/*
+ * All five sources are within 0.2% of 300:650, so `cover` trims well under a
+ * pixel here — the previous fixed 440px height cropped roughly 15% off the
+ * bottom of every screen.
+ *
+ * The ratio lives on this inner box, not on `.phone`: the global
+ * `box-sizing: border-box` would apply it to the padded border box instead and
+ * skew the content box back to ~0.438.
+ *
+ * The radius has to clear the corners baked into the sources, which are not
+ * consistent: home/lookup/pharmacy carry a ~26px *transparent* radius at 283px
+ * wide, chat and drug-details a ~17px *opaque black* one at 300px wide. The
+ * worst case is 26 x (200/283) = 18.4px at the widest breakpoint, so 22px clips
+ * both away and the dark fill below covers any antialiased remainder.
+ */
+.screen {
+  position: relative;
+  aspect-ratio: 300 / 650;
+  border-radius: var(--mf-screen-radius);
+  overflow: hidden;
+  background: #0b0b10;
+}
+
+/* An inset box-shadow would paint under the <img>; a pseudo-element sits above. */
+.screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.3);
+  pointer-events: none;
 }
 
 .image {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: top center;
-  display: block;
-  border-radius: 26px;
+}
+
+@media (hover: hover) {
+  .figure:hover .phone {
+    transform: translateY(-6px);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.26),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.1),
+      0 2px 4px rgba(19, 19, 25, 0.22), 0 12px 20px -8px rgba(19, 19, 25, 0.3),
+      0 26px 40px -18px rgba(19, 19, 25, 0.34);
+  }
+}
+
+/* No-op today — nothing inside a card is focusable — but keeps the lift correct
+   if a card ever gains a link. */
+.item:focus-within .phone {
+  transform: translateY(-6px);
 }
 
 .caption {
-  font-size: 0.9rem;
-  line-height: 1.5;
-  color: var(--text-secondary);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
   text-align: center;
-  /* Captions run 2-3 lines and differ between locales. Reserving three lines
-     keeps the row's bottom edge even instead of ragged. */
-  min-height: calc(3 * 1.5 * 0.9rem);
+  /* One label line plus two description lines. Reserving it keeps every card's
+     bottom edge on the same line across both locales. */
+  min-height: 4.25rem;
+}
+
+.label {
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: var(--text-primary);
+}
+
+.description {
+  font-size: 0.875rem;
+  line-height: 1.45;
+  color: var(--text-secondary);
+  /*
+   * The clamp is what guarantees `.caption`'s reserved height is never exceeded,
+   * so it is a hard budget rather than a safety net: a description that needs a
+   * third line at the 180px card is silently truncated instead of pushing that
+   * one card's bottom edge out of line with the rest.
+   *
+   * Measured ceiling is ~43 characters — 45 wrapped to three lines. Keep new
+   * descriptions at or under 42 in both locales and re-check at a 320px
+   * viewport, which is where the 180px card and the longest wrap coincide.
+   */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/*
+ * Deliberately short and centred rather than full-bleed. The fill is honestly
+ * proportional — `clientWidth / scrollWidth` — and at desktop widths almost
+ * everything fits, so it sits around 89% full. Spanning the whole panel in
+ * saturated brand red at that ratio read as a *loading* bar stuck near the end.
+ * Short, centred and muted is the conventional shape for a scroll position, and
+ * it reads as one at any fill ratio.
+ */
+.progress {
+  margin: 1.25rem auto 0;
+  width: min(280px, 60%);
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(26, 26, 46, 0.12);
+  overflow: hidden;
+}
+
+/* Width and offset are written straight from the scroll handler. No transition:
+   the updates are already per-frame, and easing on top of them makes the bar lag
+   behind a drag. */
+.progressFill {
+  display: block;
+  height: 100%;
+  width: 100%;
+  border-radius: inherit;
+  background: var(--medifind-red);
 }
 
 @media (max-width: 900px) {
-  .figure,
-  .phone {
-    width: 200px;
+  .stage {
+    --mf-gutter: 1.75rem;
   }
 
-  .phone {
-    height: 400px;
+  .strip {
+    --mf-card: 200px;
+    --mf-bezel: 9px;
+    --mf-screen-radius: 20px;
+
+    gap: 1.75rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .stage {
+    --mf-gutter: 1.5rem;
+
+    border-radius: 20px;
   }
 }
 
 /* The scroll affordance matters most here, so keep a peek of the next card. */
 @media (max-width: 600px) {
+  .stage {
+    --mf-gutter: 1.25rem;
+  }
+
   .strip {
+    --mf-card: 180px;
+    --mf-bezel: 8px;
+    --mf-screen-radius: 18px;
+
     gap: 1.5rem;
   }
 }
 
+@media (max-width: 480px) {
+  .stage {
+    --mf-gutter: 1rem;
+
+    border-radius: 18px;
+  }
+
+  .strip {
+    gap: 1.25rem;
+  }
+
+  .controls {
+    margin-bottom: 0.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* What the component relies on: it never passes `behavior`, so every
+     programmatic scroll resolves against this and jumps instead of animating.
+     Naming "smooth" in JS would win over this media query. */
+  .strip {
+    scroll-behavior: auto;
+  }
+
+  /* The same escape hatch globals.css gives `.animate-on-scroll`: without it a
+     failure to run the observer leaves five invisible cards. */
+  .item {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .figure:hover .phone,
+  .item:focus-within .phone {
+    transform: none;
+  }
+}
+
 @media print {
+  .stage {
+    padding: 0;
+    background: none;
+    border: none;
+    box-shadow: none;
+  }
+
+  .controls,
+  .progress {
+    display: none;
+  }
+
+  .stripWrap {
+    margin-inline: 0;
+  }
+
   .strip {
     overflow-x: visible;
     flex-wrap: wrap;
+    padding: 0;
+    gap: 1.5rem;
+    /* A mask paints nothing at the fading edges and rasterisation keeps that, so
+       the outer cards would otherwise print faded. */
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .item {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+
+  .phone {
+    box-shadow: none;
   }
 }

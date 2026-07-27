@@ -2,7 +2,13 @@
  * Barrel export for all icon components
  */
 
-export { MenuIcon, CloseIcon, ChevronDownIcon } from "./NavIcons";
+export {
+  MenuIcon,
+  CloseIcon,
+  ChevronDownIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+} from "./NavIcons";
 export {
   HealthTrackIcon,
   ReminderIcon,

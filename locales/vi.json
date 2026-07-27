@@ -155,25 +155,34 @@
   "showcase": {
     "title": "Bên trong ứng dụng",
     "subtitle": "Các màn hình từ phiên bản hiện tại",
+    "controls": {
+      "previous": "Màn hình trước",
+      "next": "Màn hình tiếp theo"
+    },
     "screens": {
       "drug_details": {
-        "caption": "Mỗi loại thuốc được giải thích bằng ngôn ngữ dễ hiểu, kèm thành phần và số đăng ký",
+        "label": "Chi tiết thuốc",
+        "description": "Công dụng, thành phần và nhà sản xuất.",
         "alt": "Màn hình chi tiết thuốc Phospholugel, hiển thị nhà sản xuất, công dụng, thành phần và số đăng ký của thuốc"
       },
       "home": {
-        "caption": "Toàn bộ liều thuốc trong ngày trong một màn hình, liều kế tiếp luôn hiển thị",
+        "label": "Lịch uống thuốc",
+        "description": "Các liều trong ngày, liều kế tiếp luôn rõ.",
         "alt": "Màn hình chính của ứng dụng với lời chào, bảng tin sức khỏe và dòng thời gian các thuốc đã lên lịch trong ngày"
       },
       "lookup": {
-        "caption": "Tra cứu và tìm thuốc theo tên hoặc theo nhóm",
+        "label": "Tra cứu thuốc",
+        "description": "Tìm theo tên hoặc duyệt theo nhóm.",
         "alt": "Màn hình tra cứu thuốc hiển thị lưới các nhóm gồm thuốc kháng axit, thực phẩm bổ sung, vi lượng đồng căn và chăm sóc tiểu đường"
       },
       "chat": {
-        "caption": "MediGPT trả lời các câu hỏi tiếp theo bằng ngôn ngữ đời thường",
+        "label": "Trợ lý MediGPT",
+        "description": "Hỏi thêm bằng ngôn ngữ đời thường.",
         "alt": "Màn hình trò chuyện MediGPT hiển thị cuộc hội thoại về các cách phòng ngừa lây nhiễm COVID-19"
       },
       "pharmacy": {
-        "caption": "Tìm nhà thuốc và phòng khám uy tín gần bạn, đồng thời theo dõi lịch hẹn",
+        "label": "Tìm nhà thuốc",
+        "description": "Nhà thuốc uy tín gần bạn và lịch hẹn.",
         "alt": "Màn hình bản đồ hiển thị các nhà thuốc và phòng khám nha khoa gần đó, phía trên là danh sách các lịch hẹn sắp tới"
       }
     }

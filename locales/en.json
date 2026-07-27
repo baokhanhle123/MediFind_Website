@@ -155,25 +155,34 @@
   "showcase": {
     "title": "Inside the app",
     "subtitle": "Screens from the current build",
+    "controls": {
+      "previous": "Previous screen",
+      "next": "Next screen"
+    },
     "screens": {
       "drug_details": {
-        "caption": "Every medicine explained in plain language, with ingredients and registration details",
+        "label": "Drug details",
+        "description": "What it treats, what's in it, who makes it.",
         "alt": "Drug details screen for Phospholugel, showing the manufacturer, what the medicine treats, its ingredients and its registration number"
       },
       "home": {
-        "caption": "The day's doses at a glance, with the next one always in view",
+        "label": "Daily schedule",
+        "description": "The day's doses, next one always in view.",
         "alt": "App home screen with a greeting, a health news carousel and a timeline of the day's scheduled medicines"
       },
       "lookup": {
-        "caption": "Browse and search medicines by name or category",
+        "label": "Medicine lookup",
+        "description": "Search by name or browse by category.",
         "alt": "Medicine lookup screen showing a grid of categories including antacids, supplements, homeopathy and diabetes care"
       },
       "chat": {
-        "caption": "MediGPT answers follow-up questions in everyday language",
+        "label": "MediGPT assistant",
+        "description": "Follow-up questions in plain language.",
         "alt": "MediGPT chat screen showing a conversation about ways to prevent COVID-19 infection"
       },
       "pharmacy": {
-        "caption": "Find trusted pharmacies and clinics nearby, and keep track of appointments",
+        "label": "Pharmacy finder",
+        "description": "Nearby pharmacies, plus appointments.",
         "alt": "Map screen showing nearby pharmacies and dental clinics above a list of upcoming appointments"
       }
     }

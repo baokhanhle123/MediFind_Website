@@ -118,6 +118,54 @@ test.describe('Accessibility', () => {
     await expect(page.getByRole('button', { name: /open menu/i })).toBeFocused();
   });
 
+  test('app showcase filmstrip is operable without its native scrollbar', async ({ page }) => {
+    await page.goto('/en');
+
+    const strip = page.locator('#app-showcase-strip');
+    const prev = page.getByRole('button', { name: /previous screen/i });
+    const next = page.getByRole('button', { name: /next screen/i });
+
+    // The native scrollbar is hidden, so the arrows and the keyboard handler are
+    // the only non-touch ways to reach the cards that overflow. A regression
+    // here strands mouse users with no visible affordance at all.
+    // Annotated because a Locator resolves to SVGElement | HTMLElement, and
+    // offsetHeight only exists on the latter.
+    const scrollbarHeight = await strip.evaluate(
+      (el: HTMLElement) => el.offsetHeight - el.clientHeight
+    );
+    expect(scrollbarHeight).toBe(0);
+
+    // aria-disabled rather than the disabled attribute: a button that disables
+    // itself while focused hands focus to <body>, so pressing "next" at the last
+    // card would send the following Tab back to the top of the document.
+    await expect(prev).toHaveAttribute('aria-disabled', 'true');
+    await expect(next).toHaveAttribute('aria-disabled', 'false');
+
+    // How far the strip overflows depends on the breakpoint, so step to the end
+    // by state rather than by a fixed number of clicks.
+    for (
+      let i = 0;
+      i < 8 && (await next.getAttribute('aria-disabled')) === 'false';
+      i++
+    ) {
+      await next.click();
+      await page.waitForTimeout(500);
+    }
+
+    await expect(next).toHaveAttribute('aria-disabled', 'true');
+    await expect(prev).toHaveAttribute('aria-disabled', 'false');
+
+    // Nothing inside the strip is focusable, so the container's own key handling
+    // is the whole keyboard story (WCAG 2.1.1). Poll rather than read once:
+    // `scroll-behavior: smooth` means scrollLeft settles over several frames.
+    await strip.focus();
+    await page.keyboard.press('Home');
+    await expect
+      .poll(() => strip.evaluate((el) => Math.round(el.scrollLeft)))
+      .toBe(0);
+    await expect(prev).toHaveAttribute('aria-disabled', 'true');
+  });
+
   test('interactive elements have a visible focus indicator', async ({ page }) => {
     await page.goto('/en');
 
