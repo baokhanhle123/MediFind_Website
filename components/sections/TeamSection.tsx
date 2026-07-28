@@ -10,6 +10,7 @@ import Image from "next/image";
 import {
   MENTOR_KEYS,
   FOUNDER_KEYS,
+  CORE_KEYS,
   AWARD_TYPES,
   MAX_AWARDS_DISPLAY,
   TEAM_PHOTOS,
@@ -57,6 +58,24 @@ export default function TeamSection() {
                   role={String(t(`team.founders.${key}.role`))}
                   image={TEAM_PHOTOS[key]}
                   type="founder"
+                />
+              ))}
+            </div>
+          </div>
+        </AnimatedSection>
+
+        {/* Core team */}
+        <AnimatedSection delay={175}>
+          <div className={styles.subsection}>
+            <h3 className={styles.subsectionTitle}>{String(t("team.core.title"))}</h3>
+            <div className={styles.coreGrid}>
+              {CORE_KEYS.map((key) => (
+                <TeamCard
+                  key={key}
+                  name={String(t(`team.core.${key}.name`))}
+                  role={String(t(`team.core.${key}.role`))}
+                  image={TEAM_PHOTOS[key]}
+                  type="core"
                 />
               ))}
             </div>

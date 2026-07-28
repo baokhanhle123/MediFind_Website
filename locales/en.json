@@ -252,6 +252,21 @@
         "role": "Product"
       }
     },
+    "core": {
+      "title": "Core Team",
+      "thu": {
+        "name": "Thu Nguyen Hoang Anh",
+        "role": "NLP Engineer"
+      },
+      "toai": {
+        "name": "Toai Tran Hoang Cong",
+        "role": "Mobile Developer"
+      },
+      "minh": {
+        "name": "Minh Vo Duc",
+        "role": "Backend Developer"
+      }
+    },
     "partners": {
       "title": "Partners",
       "hcmut_tbi": "HCMUT Technology Business Incubator",

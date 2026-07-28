@@ -252,6 +252,21 @@
         "role": "Sản phẩm"
       }
     },
+    "core": {
+      "title": "Đội ngũ nòng cốt",
+      "thu": {
+        "name": "Nguyễn Hoàng Anh Thư",
+        "role": "Kỹ sư NLP"
+      },
+      "toai": {
+        "name": "Trần Hoàng Công Toại",
+        "role": "Lập trình viên Mobile"
+      },
+      "minh": {
+        "name": "Võ Đức Minh",
+        "role": "Lập trình viên Backend"
+      }
+    },
     "partners": {
       "title": "Đối tác",
       "hcmut_tbi": "Vườn ươm Công nghệ Bách Khoa",

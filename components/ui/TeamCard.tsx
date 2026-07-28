@@ -8,7 +8,7 @@ interface TeamCardProps {
   name: string;
   role: string;
   image?: string;
-  type?: "mentor" | "founder";
+  type?: "mentor" | "founder" | "core";
 }
 
 export default function TeamCard({
@@ -17,8 +17,10 @@ export default function TeamCard({
   image,
   type = "mentor",
 }: TeamCardProps) {
+  // "mentor" has no variant rule — it is the default look — so the lookup is
+  // guarded rather than emitting a literal "undefined" class.
   return (
-    <div className={`${styles.card} ${styles[type]}`}>
+    <div className={`${styles.card} ${styles[type] ?? ""}`}>
       <div className={styles.imageContainer}>
         {image ? (
           <Image

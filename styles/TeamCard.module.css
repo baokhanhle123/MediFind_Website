@@ -65,3 +65,13 @@
   border-radius: 20px;
   display: inline-block;
 }
+
+/*
+ * Core team variant — the secondary brand blue, so each group reads as its own:
+ * mentors grey, founders red, core blue. The role text stays red and the hover
+ * ring stays red, so only the resting border colour differs.
+ */
+.core .imageContainer {
+  border-color: var(--medifind-blue);
+  box-shadow: 0 4px 12px rgba(30, 136, 229, 0.2);
+}
