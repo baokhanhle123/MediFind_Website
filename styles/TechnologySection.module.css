@@ -118,39 +118,118 @@
   margin: 0;
 }
 
-.paperTitle {
-  display: block;
-  margin-top: 1rem;
+/* Publication record
+ *
+ * Left-aligned on purpose. `.infoCard` centres its text, which is fine for a
+ * one-line caption and wrong for a citation — a centred, ragged paper title and
+ * venue is what made this read as flimsy when it lived inside the card grid.
+ *
+ * The red rail is the same idiom as `.subsectionTitle` in TeamSection, so the
+ * block reads as part of the system rather than a one-off.
+ */
+.record {
+  background: white;
+  padding: 2rem 2rem 2rem 2.25rem;
+  border-radius: 16px;
+  border-left: 4px solid var(--medifind-red);
+  box-shadow: var(--shadow-sm);
+}
+
+.recordHeading {
+  font-size: 1.25rem;
+  font-weight: 600;
   color: var(--text-primary);
-  font-size: 0.875rem;
-  font-style: italic;
+  margin-bottom: 1.5rem;
+}
+
+/*
+ * Near-equal columns, metadata marginally the wider of the two. A 1.15fr title
+ * column looked better at 1440 but starved the metadata just above the 900px
+ * stack, and the DOI — the one string in here that must stay readable
+ * character by character — broke mid-token between roughly 900 and 980px.
+ */
+.recordBody {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 2.5rem;
+}
+
+/* space-between drops the CTA onto the metadata column's bottom edge, so the
+   two columns close on the same line instead of the button floating. */
+.recordMain {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+/*
+ * Roman, not italic. Citation convention italicises the proceedings and sets the
+ * paper title upright; this section had it the other way round.
+ */
+.recordTitle {
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-style: normal;
+  line-height: 1.45;
+  color: var(--text-primary);
+}
+
+/* Button supplies the chrome; this only spaces the label from its trailing icon. */
+.recordCta {
+  gap: 0.5rem;
+}
+
+.recordMeta {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1.25rem;
+  row-gap: 0.75rem;
+  align-items: baseline;
+  margin: 0;
+  padding-left: 2.5rem;
+  border-left: 1px solid rgba(26, 26, 46, 0.08);
+}
+
+.recordMetaKey {
+  font-size: 0.8125rem;
+  font-weight: 500;
   line-height: 1.5;
+  color: var(--text-secondary);
 }
 
-.paperBadge {
-  display: inline-block;
-  margin-top: 0.625rem;
-  padding: 0.5rem 1rem;
-  background: var(--background-alt);
-  color: var(--medifind-red);
-  font-size: 0.8rem;
-  font-weight: 500;
-  border-radius: 20px;
+.recordMetaValue {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin: 0;
 }
 
-.paperLink {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.375rem;
-  margin-top: 0.75rem;
+.recordVenue {
+  font-style: italic;
+}
+
+/*
+ * Monospace because a DOI is an identifier to be read character by character,
+ * and `overflow-wrap` because it is one unbroken token that would otherwise
+ * push the page sideways on a narrow screen.
+ *
+ * The underline is faint but present at rest rather than hover-only: red text
+ * is the only other thing marking this as a link, and WCAG 1.4.1 wants colour
+ * not to be the sole signal.
+ */
+.recordDoi {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.8125rem;
   color: var(--medifind-red);
-  font-size: 0.85rem;
-  font-weight: 500;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
+  border-bottom: 1px solid rgba(196, 30, 58, 0.35);
+  overflow-wrap: anywhere;
 }
 
-.paperLink:hover {
+.recordDoi:hover,
+.recordDoi:focus-visible {
   border-bottom-color: currentColor;
 }
 
@@ -178,6 +257,19 @@
   .infoCards {
     grid-template-columns: 1fr;
   }
+
+  .recordBody {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  /* Stacked, so the divider has to move with it. */
+  .recordMeta {
+    padding-left: 0;
+    padding-top: 1.75rem;
+    border-left: none;
+    border-top: 1px solid rgba(26, 26, 46, 0.08);
+  }
 }
 
 @media (max-width: 600px) {
@@ -191,5 +283,19 @@
 
   .architectureBox {
     padding: 1.5rem;
+  }
+
+  .record {
+    padding: 1.5rem 1.5rem 1.5rem 1.75rem;
+  }
+
+  /* Two narrow columns squeeze the venue to two words a line; stack instead. */
+  .recordMeta {
+    grid-template-columns: 1fr;
+    row-gap: 0.25rem;
+  }
+
+  .recordMetaKey:not(:first-of-type) {
+    margin-top: 0.75rem;
   }
 }

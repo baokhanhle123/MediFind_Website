@@ -210,11 +210,19 @@
       "description": "Digitize patients' medication history"
     },
     "research": {
-      "title": "Recreating models from scratch",
-      "description": "Utilize various advanced technologies to create our own model",
-      "paper": "Published at ACOMPA 2023 — International Conference on Advanced Computing and Analytics, IEEE",
-      "paper_title": "MediFind — A Medicine Detection Framework for Vietnamese Medical Prescription",
-      "paper_cta": "Read the paper on IEEE Xplore"
+      "title": "Tuned for Vietnamese prescriptions",
+      "description": "VietOCR and spaCy, fine-tuned on Vietnamese prescription text rather than used off the shelf"
+    },
+    "publication": {
+      "heading": "Published research",
+      "venue_label": "Published in",
+      "publisher_label": "Publisher",
+      "presented_label": "Presented",
+      "date": "22 November 2023",
+      "location": "Da Nang City, Vietnam",
+      "doi_label": "DOI",
+      "cta": "Read on IEEE Xplore",
+      "new_tab": "(opens in a new tab)"
     },
     "architecture": {
       "description": "MediFind's central architecture is based on two stages: Optical Character Recognition (OCR) and Natural Language Processing (NLP). By combining VietOCR and spaCy, and after a careful fine-tuning process, we have achieved a high degree of accuracy in identifying the names of medicines and antibiotics."

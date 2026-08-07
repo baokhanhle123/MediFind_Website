@@ -4,6 +4,8 @@ import React from "react";
 import { useLanguage } from "@/context/LanguageContext";
 import SectionTitle from "@/components/ui/SectionTitle";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import Button from "@/components/ui/Button";
+import { ExternalLinkIcon } from "@/components/ui/icons";
 import { PAPER } from "@/constants";
 import styles from "@/styles/TechnologySection.module.css";
 
@@ -94,47 +96,25 @@ export default function TechnologySection() {
                 <p>{String(t("technology.digital.description"))}</p>
               </div>
 
+              {/* Tuning, not authorship: the pipeline adapts VietOCR and spaCy
+                  rather than building either from nothing, and the icon should
+                  not imply otherwise. */}
               <div className={styles.infoCard}>
                 <div className={styles.infoIcon}>
                   <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
-                    <polyline points="14 2 14 8 20 8" />
-                    <line x1="16" y1="13" x2="8" y2="13" />
-                    <line x1="16" y1="17" x2="8" y2="17" />
+                    <line x1="4" y1="21" x2="4" y2="14" />
+                    <line x1="4" y1="10" x2="4" y2="3" />
+                    <line x1="12" y1="21" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12" y2="3" />
+                    <line x1="20" y1="21" x2="20" y2="16" />
+                    <line x1="20" y1="12" x2="20" y2="3" />
+                    <line x1="1" y1="14" x2="7" y2="14" />
+                    <line x1="9" y1="8" x2="15" y2="8" />
+                    <line x1="17" y1="16" x2="23" y2="16" />
                   </svg>
                 </div>
                 <h4>{String(t("technology.research.title"))}</h4>
                 <p>{String(t("technology.research.description"))}</p>
-                {/* The publication is the strongest external validation on the
-                    page, so it links to the record rather than sitting as an
-                    unverifiable badge. */}
-                <cite className={styles.paperTitle}>
-                  {String(t("technology.research.paper_title"))}
-                </cite>
-                <span className={styles.paperBadge}>
-                  {String(t("technology.research.paper"))}
-                </span>
-                <a
-                  className={styles.paperLink}
-                  href={PAPER.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {String(t("technology.research.paper_cta"))}
-                  <svg
-                    width="14"
-                    height="14"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    aria-hidden="true"
-                  >
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
-                    <polyline points="15 3 21 3 21 9" />
-                    <line x1="10" y1="14" x2="21" y2="3" />
-                  </svg>
-                </a>
               </div>
             </div>
           </AnimatedSection>
@@ -142,6 +122,85 @@ export default function TechnologySection() {
           <AnimatedSection delay={300}>
             <div className={styles.architectureBox}>
               <p>{String(t("technology.architecture.description"))}</p>
+            </div>
+          </AnimatedSection>
+
+          {/*
+            The claim above is the loud one; this is its receipt. The publication
+            is the only thing on the page a reader can check without taking our
+            word for it, so it gets a record of its own rather than a badge tucked
+            into a card — with the DOI exposed, not just the Xplore link.
+
+            Title, venue, publisher and DOI render straight from PAPER in both
+            locales: translating a citation's proper nouns would make the paper
+            unfindable for the reader most likely to search for it.
+          */}
+          <AnimatedSection delay={400}>
+            <div id="research" className={styles.record}>
+              <h3 className={styles.recordHeading}>
+                {String(t("technology.publication.heading"))}
+              </h3>
+
+              <div className={styles.recordBody}>
+                <div className={styles.recordMain}>
+                  <cite className={styles.recordTitle}>{PAPER.title}</cite>
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    href={PAPER.url}
+                    className={styles.recordCta}
+                  >
+                    {String(t("technology.publication.cta"))}
+                    <ExternalLinkIcon aria-hidden />
+                    <span className="sr-only">
+                      {String(t("technology.publication.new_tab"))}
+                    </span>
+                  </Button>
+                </div>
+
+                <dl className={styles.recordMeta}>
+                  <dt className={styles.recordMetaKey}>
+                    {String(t("technology.publication.venue_label"))}
+                  </dt>
+                  <dd className={`${styles.recordMetaValue} ${styles.recordVenue}`}>
+                    {PAPER.venue}
+                  </dd>
+
+                  <dt className={styles.recordMetaKey}>
+                    {String(t("technology.publication.publisher_label"))}
+                  </dt>
+                  <dd className={styles.recordMetaValue}>{PAPER.publisher}</dd>
+
+                  {/* Date and place read as prose rather than as identifiers, so
+                      unlike the rest of the record they are translated. Both must
+                      track PAPER.date and PAPER.location. */}
+                  <dt className={styles.recordMetaKey}>
+                    {String(t("technology.publication.presented_label"))}
+                  </dt>
+                  <dd className={styles.recordMetaValue}>
+                    {String(t("technology.publication.date"))}
+                    {" · "}
+                    {String(t("technology.publication.location"))}
+                  </dd>
+
+                  <dt className={styles.recordMetaKey}>
+                    {String(t("technology.publication.doi_label"))}
+                  </dt>
+                  <dd className={styles.recordMetaValue}>
+                    <a
+                      className={styles.recordDoi}
+                      href={`https://doi.org/${PAPER.doi}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {PAPER.doi}
+                      <span className="sr-only">
+                        {String(t("technology.publication.new_tab"))}
+                      </span>
+                    </a>
+                  </dd>
+                </dl>
+              </div>
             </div>
           </AnimatedSection>
         </div>

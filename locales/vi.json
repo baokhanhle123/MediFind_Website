@@ -210,11 +210,19 @@
       "description": "Số hóa lịch sử dùng thuốc của bệnh nhân"
     },
     "research": {
-      "title": "Tạo mô hình từ đầu",
-      "description": "Sử dụng các công nghệ tiên tiến khác nhau để tạo mô hình riêng",
-      "paper": "Công bố tại ACOMPA 2023 — Hội nghị quốc tế về Tính toán và Phân tích Nâng cao, IEEE",
-      "paper_title": "MediFind — Khung nhận diện thuốc cho đơn thuốc Việt Nam",
-      "paper_cta": "Đọc bài báo trên IEEE Xplore"
+      "title": "Tinh chỉnh cho đơn thuốc Việt Nam",
+      "description": "VietOCR và spaCy được tinh chỉnh trên văn bản đơn thuốc tiếng Việt, thay vì dùng nguyên bản"
+    },
+    "publication": {
+      "heading": "Nghiên cứu đã công bố",
+      "venue_label": "Công bố tại",
+      "publisher_label": "Nhà xuất bản",
+      "presented_label": "Trình bày",
+      "date": "22 tháng 11 năm 2023",
+      "location": "Đà Nẵng, Việt Nam",
+      "doi_label": "Mã DOI",
+      "cta": "Đọc trên IEEE Xplore",
+      "new_tab": "(mở trong tab mới)"
     },
     "architecture": {
       "description": "Kiến trúc trung tâm của MediFind dựa trên hai giai đoạn: Nhận dạng ký tự quang học (OCR) và Xử lý ngôn ngữ tự nhiên (NLP). Bằng cách kết hợp VietOCR và spaCy, sau quá trình tinh chỉnh cẩn thận, chúng tôi đã đạt được độ chính xác cao trong việc xác định tên thuốc và kháng sinh."

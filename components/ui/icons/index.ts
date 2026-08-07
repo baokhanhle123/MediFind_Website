@@ -22,5 +22,6 @@ export {
   InfoCircleIcon,
   UniversityIcon,
   GlobeIcon,
+  ExternalLinkIcon,
   ComputerIcon,
 } from "./MiscIcons";
