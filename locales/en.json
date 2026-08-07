@@ -232,10 +232,6 @@
     "title": "Highlight",
     "mentors": {
       "title": "Mentors",
-      "sonia": {
-        "name": "Miss Sonia",
-        "role": "Business Advisor"
-      },
       "thoai": {
         "name": "Assoc.Prof Thoai Nam",
         "role": "Technical Advisor"
@@ -243,6 +239,18 @@
       "xuan": {
         "name": "MSc Ha Thi Thanh Xuan",
         "role": "Medical Advisor"
+      },
+      "dung": {
+        "name": "Dr. Do Thi Mai Dung",
+        "role": "Medical Advisor"
+      },
+      "sonia": {
+        "name": "Miss Sonia",
+        "role": "Business Advisor"
+      },
+      "huy": {
+        "name": "Ph.D Nguyen Hoang Huy",
+        "role": "Business Advisor"
       }
     },
     "founders": {
@@ -262,9 +270,33 @@
     },
     "core": {
       "title": "Core Team",
+      "phu": {
+        "name": "Phu Dang Ngoc",
+        "role": "OCR Developer"
+      },
+      "nghia": {
+        "name": "Nghia Dang Kim",
+        "role": "NLP Developer"
+      },
+      "tri": {
+        "name": "Tri Cao Chanh",
+        "role": "LLM Developer"
+      },
+      "bao": {
+        "name": "Bao Bui Van Quoc",
+        "role": "AI Developer"
+      },
+      "anh": {
+        "name": "Anh Ngo Ngoc Tuan",
+        "role": "Big Data Engineer"
+      },
       "thu": {
         "name": "Thu Nguyen Hoang Anh",
-        "role": "NLP Engineer"
+        "role": "Big Data Analytics"
+      },
+      "hung": {
+        "name": "Hung Nguyen Viet",
+        "role": "Software Developer"
       },
       "toai": {
         "name": "Toai Tran Hoang Cong",

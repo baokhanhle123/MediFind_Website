@@ -20,25 +20,34 @@
   border-left: 4px solid var(--medifind-red);
 }
 
-/* Mentors Grid */
-.mentorsGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-/* Founding team */
-.foundersGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 2rem;
-}
-
-/* Core team */
+/*
+ * Mentors, founding team and core team.
+ *
+ * Flex rather than grid, because no roster is a multiple of the column count at
+ * every breakpoint — five mentors leave a trailing pair at three columns, nine
+ * core members leave a single card at two, and all three groups already left a
+ * hole at two columns back when each held three people. `justify-content:
+ * center` closes that hole for any count, where a grid would need nth-child
+ * arithmetic re-derived every time somebody joins.
+ *
+ * The basis is one 1fr track of the three-column grid this replaced, so card
+ * widths are unchanged and founders and core do not move at desktop. The
+ * 0.01px trim absorbs sub-pixel rounding: without it three cards summing to
+ * exactly 100% occasionally wrap the third.
+ */
+.mentorsGrid,
+.foundersGrid,
 .coreGrid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 2rem;
+}
+
+.mentorsGrid > *,
+.foundersGrid > *,
+.coreGrid > * {
+  flex: 0 1 calc((100% - 4rem) / 3 - 0.01px);
 }
 
 /* Partners */
@@ -155,10 +164,10 @@
 
 /* Responsive */
 @media (max-width: 900px) {
-  .mentorsGrid,
-  .foundersGrid,
-  .coreGrid {
-    grid-template-columns: repeat(2, 1fr);
+  .mentorsGrid > *,
+  .foundersGrid > *,
+  .coreGrid > * {
+    flex-basis: calc((100% - 2rem) / 2 - 0.01px);
   }
 
   .partnersGrid {
@@ -171,10 +180,10 @@
 }
 
 @media (max-width: 600px) {
-  .mentorsGrid,
-  .foundersGrid,
-  .coreGrid {
-    grid-template-columns: 1fr;
+  .mentorsGrid > *,
+  .foundersGrid > *,
+  .coreGrid > * {
+    flex-basis: 100%;
   }
 
   .partnersGrid {

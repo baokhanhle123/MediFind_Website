@@ -232,10 +232,6 @@
     "title": "Điểm nổi bật",
     "mentors": {
       "title": "Cố vấn",
-      "sonia": {
-        "name": "Cô Sonia",
-        "role": "Cố vấn Kinh doanh"
-      },
       "thoai": {
         "name": "PGS. Thoại Nam",
         "role": "Cố vấn Kỹ thuật"
@@ -243,6 +239,18 @@
       "xuan": {
         "name": "ThS. Hà Thị Thanh Xuân",
         "role": "Cố vấn Y khoa"
+      },
+      "dung": {
+        "name": "BS. Đỗ Thị Mai Dung",
+        "role": "Cố vấn Y khoa"
+      },
+      "sonia": {
+        "name": "Cô Sonia",
+        "role": "Cố vấn Kinh doanh"
+      },
+      "huy": {
+        "name": "TS. Nguyễn Hoàng Huy",
+        "role": "Cố vấn Kinh doanh"
       }
     },
     "founders": {
@@ -262,9 +270,33 @@
     },
     "core": {
       "title": "Đội ngũ nòng cốt",
+      "phu": {
+        "name": "Đặng Ngọc Phú",
+        "role": "Lập trình viên OCR"
+      },
+      "nghia": {
+        "name": "Đặng Kim Nghĩa",
+        "role": "Lập trình viên NLP"
+      },
+      "tri": {
+        "name": "Cao Chánh Trí",
+        "role": "Lập trình viên LLM"
+      },
+      "bao": {
+        "name": "Bùi Văn Quốc Bảo",
+        "role": "Lập trình viên AI"
+      },
+      "anh": {
+        "name": "Ngô Ngọc Tuấn Anh",
+        "role": "Kỹ sư Dữ liệu lớn"
+      },
       "thu": {
         "name": "Nguyễn Hoàng Anh Thư",
-        "role": "Kỹ sư NLP"
+        "role": "Phân tích Dữ liệu lớn"
+      },
+      "hung": {
+        "name": "Nguyễn Viết Hùng",
+        "role": "Lập trình viên Phần mềm"
       },
       "toai": {
         "name": "Trần Hoàng Công Toại",
